@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def update
-    @item = Conveying.find(params[:id])
+    @item = Item.find(params[:id])
     @item.update(item_params)
   end
 
