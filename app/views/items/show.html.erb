@@ -2,5 +2,5 @@
 
 <%= @unidentified_item.description %>
 
-<%= link_to "all unidentified items list", ticket_items_path  %>
+<%= link_to "all unidentified items list", ticket_items_path(@unidentified_item)  %>
 <%= link_to "add information to help identify this item", item_path(@unidentified_item) %>
