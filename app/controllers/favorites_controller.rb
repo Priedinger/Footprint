@@ -19,7 +19,11 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    redirect_to product_path(@favorite.product_id), notice: "Supprimé des favoris"
+    if params[:redirect_to] == "index"
+      redirect_to favorites_path
+    else
+      redirect_to product_path(@favorite.product_id), notice: "Supprimé des favoris"
+    end
   end
 
   private

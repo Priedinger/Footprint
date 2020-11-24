@@ -26,11 +26,10 @@ class TicketsController < ApplicationController
     redirect_to ticket_items_path(@ticket)
   end
 
-
   def destroy
     @ticket = Ticket.find(params[:id])
     @ticket.destroy
-    redirect_to root_path, notice: "Votre ticket a été supprimé"
+    redirect_to tickets_path, notice: "Votre ticket a été supprimé"
   end
 
 private

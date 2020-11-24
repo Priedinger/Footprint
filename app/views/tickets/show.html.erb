@@ -17,5 +17,5 @@
 </ul>
 
 <%= link_to "Ajouter un autre ticket", new_ticket_path %>
-<%= link_to "Supprimer un ticket", method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
+<%= link_to "Supprimer un ticket", ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
 

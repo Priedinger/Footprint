@@ -1,3 +1,10 @@
 <h1>Liste des tickets</h1>
 
-
+<ul>
+  <% @tickets.each do |ticket| %>
+    <li>
+      <%= link_to "Ticket numéro #{ticket.id}", ticket_path(ticket) %>
+      <%= link_to "Petite corbeille", ticket_path(ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
+    </li>
+  <% end %>
+</ul>

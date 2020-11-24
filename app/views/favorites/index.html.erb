@@ -1,0 +1,9 @@
+<h1>Vos favoris</h1>
+<ul>
+  <% @favorites.each do |favorite| %>
+    <li>
+      <%= favorite.product.name %>
+        <%= link_to "Petit coeur plein", favorite_path(favorite, redirect_to: "index"), method: :delete %>
+    </li>
+  <% end %>
+</ul>
