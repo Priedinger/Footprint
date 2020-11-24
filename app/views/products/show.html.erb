@@ -4,4 +4,9 @@
 
 <p>Code bar :<%=  @product.bar_code%></p>
 
-<%= link_to "Ajouter ce produit à mes favoris", favorites_path(@product.id), method: :post, notice: "Produit ajouté à vos favoris" %>
+<% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
+  <%= link_to "Petit coeur vide", favorites_path(product: @product.id), method: :post %>
+<% end %>
+<% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
+  <%= link_to "Petit coeur plein", favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), method: :delete %>
+<% end %>
