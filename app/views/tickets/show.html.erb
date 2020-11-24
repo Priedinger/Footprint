@@ -1,7 +1,21 @@
 <h1>This is the show of one ticket</h1>
 
 <%= @ticket.photo %>
+<hr>
+<ul>
+ <% @ticket.items.each do |item| %>
+  <% if item.product_id %>
+    <li>
+      <%= link_to Product.find(item.product_id).name, product_path(item.product_id) %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to item.description, edit_item_path(item) %>
+    </li>
+  <% end %>
+ <% end %>
+</ul>
 
-<%= link_to "Ajouter un ticket", new_ticket_path %>
+<%= link_to "Ajouter un autre ticket", new_ticket_path %>
 <%= link_to "Supprimer un ticket", method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
 

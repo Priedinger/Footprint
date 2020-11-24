@@ -3,3 +3,5 @@
 <p>Nom :<%=  @product.name%></p>
 
 <p>Code bar :<%=  @product.bar_code%></p>
+
+<%= link_to "Ajouter ce produit à mes favoris", favorites_path(@product.id), method: :post, notice: "Produit ajouté à vos favoris" %>
