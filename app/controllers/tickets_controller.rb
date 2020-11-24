@@ -1,8 +1,17 @@
 class TicketsController < ApplicationController
 
-def show
+
+
+  def index
+    @tickets = current_user.tickets
+  end
+  
+  def show
   @ticket = Ticket.find(params[:id])
   authorize @ticket
-end
-
+  end
+  
+  def new
+    @ticket = Ticket.new
+  end
 end

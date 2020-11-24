@@ -1,0 +1,6 @@
+<h1>This is the show of 1 specific item (with specific id) non identified</h1>
+
+<%= @unidentified_item.description %>
+
+<%= link_to "all unidentified items list", ticket_items_path  %>
+<%= link_to "add information to help identify this item", item_path(@unidentified_item) %>
