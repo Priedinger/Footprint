@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
- 
+
   def index
     @unidentified_items = Item.where(product_id: nil)
   end
-  
-   def show
+
+  def show
     @unidentified_item = Item.find(params[:id])
   end
-  
+
   def edit
     @item = Item.find(params[:id])
   end
