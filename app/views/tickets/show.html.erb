@@ -2,4 +2,6 @@
 
 <%= @ticket.photo %>
 
-<%= link_to "Ajoutez un ticket", new_ticket_path %>
+<%= link_to "Ajouter un ticket", new_ticket_path %>
+<%= link_to "Supprimer un ticket", method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
+
