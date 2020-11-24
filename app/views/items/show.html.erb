@@ -1,6 +1,11 @@
-<h1>This is the show of 1 specific item (with specific id) non identified</h1>
+<h1><%= @unidentified_item.description %></h1>
 
-<%= @unidentified_item.description %>
 
-<%= link_to "all unidentified items list", ticket_items_path(@unidentified_item)  %>
-<%= link_to "add information to help identify this item", item_path(@unidentified_item) %>
+<ul>
+  <li>
+    <%= link_to "Retour", ticket_items_path(@unidentified_item)  %>
+  </li>
+  <li>
+    <%= link_to "Scanner le code barre du produits", edit_item_path(@unidentified_item) %>
+  </li>
+</ul>

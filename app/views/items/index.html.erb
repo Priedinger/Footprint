@@ -1,7 +1,10 @@
 <div class="container">
   <h1>Items</h1>
-
-  <% @unidentified_items.each do |item| %>
-    <%= link_to item.description, item_path(item) %>
+  <ul>
+    <% @unidentified_items.each do |item| %>
+      <li>
+        <%= link_to item.description, item_path(item) %>
+      </li>
     <% end %>
+  </ul>
 </div>

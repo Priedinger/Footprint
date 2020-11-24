@@ -4,8 +4,10 @@ require 'open-uri'
 class ItemsController < ApplicationController
 
   def index
-    @unidentified_items = Item.where(product_id: nil)
+    @ticket = Ticket.find(params[:ticket_id])
+    @unidentified_items = @ticket.items.where(product_id: nil)
   end
+
 
   def show
     @unidentified_item = Item.find(params[:id])
@@ -18,12 +20,14 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @ticket = @item.ticket_lines.first.ticket_id
+
     # chercher un produit ayant le code bar en input
     @product_in_db = Product.find_by(bar_code: params[:bar_code])
     if @product_in_db
       @item.update(product_id: @product_in_db.id)
 
-      redirect_to product_path(@product_in_db)
+        redirect_to ticket_items_path(@ticket)
     else
       # call API open food fact avec le code bar
       url = "https://world.openfoodfacts.org/api/v0/product/#{params[:bar_code]}.json"
@@ -48,7 +52,7 @@ class ItemsController < ApplicationController
           )
         # attribution de l'id du nouveau produit à l'item
         @item.update(product_id: @new_product.id)
-        redirect_to product_path(@new_product)
+        redirect_to ticket_items_path(@ticket)
       else
         render :edit
       end
