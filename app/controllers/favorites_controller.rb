@@ -3,9 +3,28 @@ class FavoritesController < ApplicationController
     @favorites = current_user.favorites
   end
 
+  def create
+    @favorite = Favorite.new(favorite_params)
+    @favorite.user = current_user
+    @product = Product.find(params[:product_id])
+    @favorite.product = @product
+    if @favorite.save
+      redirect_to product_path(@product), notice: "Ajouté aux favoris"
+    else
+      render 'products/show'
+    end
+  end
+  
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
     redirect_to favorites_path
   end
+  
+  private
+
+  def favorite_params
+    params.require(:favorite).permit(:user_id, :product_id)
+  end
+
 end
