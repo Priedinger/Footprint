@@ -1,12 +1,26 @@
-<h1>Voici la "show" pour ce produit :></h1>
+<h1>Fiche produit: <%= @product.name%></h1>
 
-<p>Nom :<%=  @product.name%></p>
+<%= image_tag @product.photo %>
 
-<p>Code bar :<%=  @product.bar_code%></p>
+<p>Marque :<%= @product.brand%></p>
+<p>Catégorie :<%= @product.category%></p>
+<p>Score :<%= @product.score%></p>
+<p>Nom générique :<%= @product.generic_name%></p>
+<p>Code bar :<%= @product.bar_code%></p>
 
+<hr>
+<h3>Favoris</h3>
 <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
   <%= link_to "Petit coeur vide", favorites_path(product: @product.id), method: :post %>
 <% end %>
 <% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
   <%= link_to "Petit coeur plein", favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), method: :delete %>
 <% end %>
+<hr>
+<h3>Alternatives</h3>
+<ul>
+  <% @alternatives.each do |alternative| %>
+    <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li> 
+  <% end %>
+</ul>
+

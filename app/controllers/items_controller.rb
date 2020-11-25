@@ -48,7 +48,8 @@ class ItemsController < ApplicationController
           name: product["product"]["product_name_fr"],
           photo: product["product"]["selected_images"]["front"]["small"]["fr"],
           generic_name: product["product"]["generic_name"],
-          brand: product["product"]["brands"]
+          brand: product["product"]["brands"],
+          category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"]
           )
         # attribution de l'id du nouveau produit à l'item
         @item.update(product_id: @new_product.id)

@@ -1,5 +1,9 @@
 
 puts "Cleaning database..."
+TicketLine.destroy_all
+Item.destroy_all
+Ticket.destroy_all
+
 User.destroy_all
 
 puts "Creating users..."
