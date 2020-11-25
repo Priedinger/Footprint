@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     @ticket = Ticket.find(params[:ticket_id])
     @unidentified_items = @ticket.items.where(product_id: nil)
+    authorize @ticket, :ticket_items?
   end
 
 
