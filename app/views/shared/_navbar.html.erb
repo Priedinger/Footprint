@@ -1,34 +1,44 @@
 <div class="navbar d-flex justify-content-center">
   <ul class="list-inline d-flex list-inline justify-content-around">
-    <li class="nav-item">
-      <div class="text-center nav-button active">
-        <i class="fas fa-home"></i>
-        <%= link_to "Dashboard", root_path %>
-      </div>
-    </li>
-    <li class="nav-item">
-      <div class="text-center nav-button">
-        <i class="fas fa-history"></i>
-        <%= link_to "Historique", tickets_path %>
-      </div>
-    </li>
-    <li class="nav-item">
-      <div class="text-center nav-button">
-        <i class="fas fa-camera"></i>
-        <%= link_to "Scan", new_ticket_path %>
-      </div>
-    </li>
-    <li class="nav-item">
-      <div class="text-center nav-button">
-        <i class="fas fa-heart"></i>
-        <%= link_to "Favoris", favorites_path %>
-      </div>
-    </li>
-    <li class="nav-item">
-      <div class="text-center nav-button">
-        <i class="fas fa-cog"></i>
-        <%= link_to "Réglages", settings_path %>
-      </div>
-    </li>
+    <%= link_to root_path do%>
+      <li class="nav-item">
+        <div class="text-center nav-button active">
+          <i class="fas fa-home"></i>
+           <p><%= "Dashboard" %></p>
+        </div>
+      </li>
+    <% end %>
+    <%= link_to tickets_path do%>
+      <li class="nav-item">
+        <div class="text-center nav-button">
+          <i class="fas fa-history"></i>
+          <p><%= "Historique" %></p>
+        </div>
+      </li>
+    <% end %>
+    <%= link_to new_ticket_path do%>
+      <li class="nav-item">
+        <div class="text-center nav-button">
+          <i class="fas fa-camera"></i>
+          <p><%= "Scan" %></p>
+        </div>
+      </li>
+    <% end %>
+    <%= link_to favorites_path do%>
+      <li class="nav-item">
+        <div class="text-center nav-button">
+          <i class="fas fa-star"></i>
+          <p><%= "Scan" %></p>
+        </div>
+      </li>
+    <% end %>
+    <%= link_to settings_path do%>
+      <li class="nav-item">
+        <div class="text-center nav-button">
+          <i class="fas fa-cog"></i>
+          <p><%= "Paramètres" %></p>
+        </div>
+      </li>
+    <% end %>
   </ul>
 </div>
