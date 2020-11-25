@@ -1,6 +1,8 @@
 <h1>This is the show of one ticket</h1>
 
 <%= @ticket.photo %>
+<%= link_to "Ajouter un autre ticket", new_ticket_path %>
+<%= link_to "Supprimer un ticket", ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
 <hr>
 <ul>
  <% @ticket.items.each do |item| %>
@@ -16,6 +18,4 @@
  <% end %>
 </ul>
 
-<%= link_to "Ajouter un autre ticket", new_ticket_path %>
-<%= link_to "Supprimer un ticket", ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
 

@@ -1,12 +1,26 @@
-<h1>Liste des tickets</h1>
-
-<ul>
+<div class="container">
+  <h1>Historique</h1>
+ 
   <% @tickets.each do |ticket| %>
-    <li>
-      <%= link_to "Ticket numéro #{ticket.id}", ticket_path(ticket) %>
-      <%= link_to ticket_path(ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
-        <i class="far fa-trash-alt"></i>
-      <% end %>
-    </li>
+    <%= link_to ticket_path(ticket) do %>
+    <div class="ticket-card">
+      <div class="ticket-infos">
+        <%= image_tag "https://media1.auchan.fr/_ui/v29_7bd5fa4048b/mobile/images/logo.svg", class: "brand-img" %>
+        <div class="ticket-shop">
+          <p><strong>Auchan</strong></p>
+          <p><small><%= ticket.created_at.strftime("%d/%m/%Y à %k:%M") %></small></p>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="ticket-items">
+        <% ticket.items.first(8).each do |item| %>
+          <% if item.product_id %>
+            <%= image_tag Product.find(item.product_id).photo, class: "product-img" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
   <% end %>
-</ul>
+
+</div>
