@@ -2,7 +2,7 @@
 <p>Profil utilisateur</p>
 <%= @current_user %>
 
-
+<%= link_to "Login", new_user_session_path, class: "nav-link" %>
 <%= link_to 'Mes Favoris', favorites_path %>
 <%= link_to 'Home', root_path %>
 
