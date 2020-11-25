@@ -4,7 +4,9 @@
   <% @tickets.each do |ticket| %>
     <li>
       <%= link_to "Ticket numéro #{ticket.id}", ticket_path(ticket) %>
-      <%= link_to "Petite corbeille", ticket_path(ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } %>
+      <%= link_to ticket_path(ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
     </li>
   <% end %>
 </ul>

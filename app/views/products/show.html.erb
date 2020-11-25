@@ -11,16 +11,21 @@
 <hr>
 <h3>Favoris</h3>
 <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
-  <%= link_to "Petit coeur vide", favorites_path(product: @product.id), method: :post %>
+  <%= link_to  favorites_path(product: @product.id), method: :post do %>
+    <i class="far fa-star" id="favorite"></i>
+  <% end %>
 <% end %>
+
 <% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
-  <%= link_to "Petit coeur plein", favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), method: :delete %>
+  <%= link_to favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), method: :delete do %>
+    <i class="far fa-star"></i>
+  <% end %>
 <% end %>
 <hr>
 <h3>Alternatives</h3>
 <ul>
   <% @alternatives.each do |alternative| %>
-    <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li> 
+    <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li>
   <% end %>
 </ul>
 
