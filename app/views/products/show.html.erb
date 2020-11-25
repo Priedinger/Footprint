@@ -20,7 +20,7 @@
 <h3>Alternatives</h3>
 <ul>
   <% @alternatives.each do |alternative| %>
-    <li><%= alternative.name %> - <%= alternative.brand %> - <%= alternative.score %></li>
+    <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li> 
   <% end %>
 </ul>
 
