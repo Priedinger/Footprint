@@ -1,11 +1,24 @@
-<h1>Vos favoris</h1>
-<ul>
-  <% @favorites.each do |favorite| %>
-    <li>
-      <%= favorite.product.name %>
-        <%= link_to favorite_path(favorite, redirect_to: "index"), method: :delete do %>
-          <i class="far fa-trash-alt" id="delete"></i>
-          <% end %>
-      </li>
+<div class="container">
+  <h1>Vos favoris</h1>
+  
+  <% if @favorites.count.zero? %>
+    <p><small>Ajoutez des produits à vos favoris</small></p>
+  <% else %>
+    <p><small>Vous avez <%= pluralize(@favorites.count,'produit', plural: 'produits') %> dans vos favoris</small></p>
   <% end %>
-</ul>
+
+  <div class="gallery-container"> 
+    <% if @favorites.count != 0 %>
+      <% @favorites.each do |favorite| %>
+        <div class="gallery-item">
+          <%= link_to product_path(favorite.product) do %>
+            <%= image_tag favorite.product.photo %>
+          <% end %>
+          <%= link_to favorite_path(favorite, redirect_to: "index"), method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
+      <% end %> 
+    <% end %>  
+  </div>
+</div>
