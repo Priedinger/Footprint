@@ -1,0 +1,44 @@
+.ticket-card {
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.07);
+  padding: 1rem;
+
+  .brand-img {
+    width: auto;
+    height: 100%;
+  }
+
+  .ticket-infos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $green;
+    height: 4rem;
+    .ticket-shop {
+      padding-left: 0.5rem;
+      flex-grow: 1;
+      color: $gray;
+    }
+    p {
+      margin: 0;
+    }
+    i {
+      color: $green;
+    }
+  }
+
+  .ticket-items {
+    display: flex;
+    justify-content: left;
+    padding-top: 0.5rem;
+    .product-img {
+      width: auto;
+      height: 1.5rem;
+      padding-left: 0.5rem;
+    }
+    .product-img:first-child {
+      padding-left: 0;
+    }
+  }
+}

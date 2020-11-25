@@ -1,2 +1,22 @@
 // Import page-specific CSS files here.
 @import "home";
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $gray;
+}
+
+a {
+  text-decoration: none;
+  color: $green;
+  &:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: $green;
+  }
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 8vh);
+}
