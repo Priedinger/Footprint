@@ -10,9 +10,9 @@ class FavoritesController < ApplicationController
     @product = Product.find(params[:product])
     @favorite.product = @product
     if @favorite.save
-      redirect_to product_path(@product), notice: "Ajouté aux favoris"
+      redirect_to product_path(@product)
     else
-      render 'products/show', notice: "Une erreur est survenue"
+      render 'products/show'
     end
   end
 
@@ -22,7 +22,7 @@ class FavoritesController < ApplicationController
     if params[:redirect_to] == "index"
       redirect_to favorites_path
     else
-      redirect_to product_path(@favorite.product_id), notice: "Supprimé des favoris"
+      redirect_to product_path(@favorite.product_id)
     end
   end
 
