@@ -36,7 +36,7 @@ class TicketsController < ApplicationController
   def destroy
     @ticket = Ticket.find(params[:id])
     @ticket.destroy
-    redirect_to tickets_path, notice: "Votre ticket a été supprimé"
+    redirect_to tickets_path
   end
 
 private

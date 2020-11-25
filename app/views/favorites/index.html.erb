@@ -3,7 +3,9 @@
   <% @favorites.each do |favorite| %>
     <li>
       <%= favorite.product.name %>
-        <%= link_to "Petit coeur plein", favorite_path(favorite, redirect_to: "index"), method: :delete %>
-    </li>
+        <%= link_to favorite_path(favorite, redirect_to: "index"), method: :delete do %>
+          <i class="far fa-trash-alt" id="delete"></i>
+          <% end %>
+      </li>
   <% end %>
 </ul>

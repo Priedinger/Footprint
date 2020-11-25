@@ -1,12 +1,20 @@
 
-
- #favorite {
+ #notfavorite {
   color: yellow;
+ }
+
+  #favorite {
+  color: yellow;
+ }
+
+ #delete  {
+  color: black;
  }
 
 
   // corbeille <i class="far fa-trash-alt"></i>
-  // etoile <i class="far fa-star"></i>
+  // etoile pleine <i class="far fa-star"></i>
+  // etoile vide <i class="fas fa-star"></i>
 
   // categories
   // vegetables <i class="fas fa-carrot"></i>

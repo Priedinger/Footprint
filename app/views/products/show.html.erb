@@ -18,7 +18,7 @@
 
 <% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
   <%= link_to favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), method: :delete do %>
-    <i class="far fa-star"></i>
+    <i class="fas fa-star" id="notfavorite"></i>
   <% end %>
 <% end %>
 <hr>
