@@ -19,9 +19,16 @@ class TicketsController < ApplicationController
     @ticket.save
     items = params[:ticket][:photo]
     items.split(',').each do |item|
-      # vérifier si l'item existe déjàs
-      new_item = Item.create!(description: item)
-      TicketLine.create(ticket_id: @ticket.id, item_id: new_item.id, quantity: 1)
+      # vérifier si l'item existe déjà
+      if Item.where(description: item).where.not(product_id: nil).first
+        # si cette description(item) est déjà associé à un produit dans la DB, on récupère l'item et on fait une ticket line avec
+        item = Item.where(description: item).where.not(product_id: nil)
+        TicketLine.create!(ticket_id: @ticket.id, item_id: item.first.id, quantity: 1)
+      else
+        # autrement on crée un nouvel item et une ticket line
+        new_item = Item.create!(description: item)
+        TicketLine.create(ticket_id: @ticket.id, item_id: new_item.id, quantity: 1)
+      end
     end
     redirect_to ticket_items_path(@ticket)
   end
