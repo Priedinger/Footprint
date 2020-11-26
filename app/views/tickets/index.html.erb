@@ -1,12 +1,16 @@
-<h1>Liste des tickets</h1>
+<div class="container">
+  <h2>Mes tickets</h2>
+</div>
 
-<ul>
+<div class="container">
+<ol>
   <% @tickets.each do |ticket| %>
     <li>
-      <%= link_to "Ticket numéro #{ticket.id}", ticket_path(ticket) %>
+      <%= link_to "Ticket n°#{ticket.id}", ticket_path(ticket) %>
       <%= link_to ticket_path(ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
         <i class="far fa-trash-alt" id="delete"></i>
       <% end %>
     </li>
   <% end %>
-</ul>
+</ol>
+</div>
