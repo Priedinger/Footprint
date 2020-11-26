@@ -3,10 +3,12 @@
   <ul>
     <% @unidentified_items.each do |item| %>
       <li>
-        <%= link_to item.description, item_path(item) %>
+        <%= link_to item.description, item_path(item, ticket_id: @ticket.id) %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
       </li>
     <% end %>
   </ul>
 </div>
 
-<%= link_to "Voir l'analyse du ticket", ticket_path(@ticket) %>
+<!-- Propose de voir l'analyse du ticket que si il y a au moins 1 product identifié -->
+
+  <%= link_to "Voir l'analyse du ticket", ticket_path(@ticket) %>

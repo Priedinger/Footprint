@@ -3,7 +3,7 @@
 
 <ul>
   <li>
-    <%= link_to "Retour", ticket_items_path(@unidentified_item)  %>
+    <%= link_to "Retour", ticket_items_path(@unidentified_item, ticket_id: @ticket.id)  %>
   </li>
   <li>
     <%= link_to "Scanner le code barre du produits", edit_item_path(@unidentified_item) %>
