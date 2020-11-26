@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Historique</h1>
+  <h1 id="title"><%= @title %></h1>
  
   <% @tickets.each do |ticket| %>
     <%= link_to ticket_path(ticket) do %>

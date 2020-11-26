@@ -1,0 +1,9 @@
+<div class="top-nav" id="top-nav">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "logo_resized_192x192.png" %>
+  <% end %>
+  <p id="second-title"><strong><%= @title %></strong></p>
+  <%= link_to settings_path do %>
+    <i class="fas fa-info-circle"></i>
+  <% end %>
+</div>

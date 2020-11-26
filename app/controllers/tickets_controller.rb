@@ -2,10 +2,12 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = current_user.tickets
+    @title = "Historique"
   end
 
   def show
     @ticket = Ticket.find(params[:id])
+    @title = "Ticket n°#{@ticket.id}"
     authorize @ticket
   end
 
