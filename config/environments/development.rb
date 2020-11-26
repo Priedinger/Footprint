@@ -60,4 +60,9 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Part of the PWA setup : it will allow requests
+  # NB : first you need to have ngrok installed > Check Le Wagon Library Tuto on PWA
+  config.hosts << /\A[a-z0-9]+\.ngrok\.io/
+  #config.hosts << "fe4b28f8df75.ngrok.io"
 end
