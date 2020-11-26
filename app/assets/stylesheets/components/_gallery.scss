@@ -1,0 +1,29 @@
+.gallery-container {
+  column-count: 2;
+  column-gap: 0.5rem;
+}
+.gallery-item {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+  img {
+    width: 100%;
+    height: auto;
+  }
+  p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $white;
+  }
+  i {
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    color: white;
+  }
+}
