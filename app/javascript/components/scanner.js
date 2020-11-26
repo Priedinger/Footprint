@@ -10,6 +10,7 @@ const initScanner = () => {
       return ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
         playSoundOnScan: false,
         vibrateOnScan: true,
+        guiStyle: "viewfinder"
       });
     })
     .then((barcodePicker) => {
