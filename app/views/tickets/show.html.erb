@@ -13,7 +13,7 @@
   <% if  item.product_id?%>
     <%= link_to product_path(item.product_id) do %>
       <div class="ticket-line">
-        <%= image_tag Product.find(item.product_id).photo, class: "product-img" %>
+        <%= image_tag Product.find(item.product_id).photo, class: "product-img-ticket" %>
         <div class="ticket-line-info">
           <% if item.product_id %>
           <p class="product-name"><%= Product.find(item.product_id).name%></p>
