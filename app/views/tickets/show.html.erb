@@ -2,10 +2,7 @@
 <h1> Ticket n°<%= @ticket.id %> </h1>
 <p><small>Scanné le <%= @ticket.created_at.strftime("%d/%m/%Y à %k:%M") %></small></p>
 
-<div class="ticket-icons">
-  <%= link_to new_ticket_path do %>
-  <i class="fas fa-plus"></i>
-  <% end %>
+<div class="ticket-icon">
   <%= link_to ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
   <i class="far fa-trash-alt"></i>
   <% end %>
