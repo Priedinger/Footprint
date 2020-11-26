@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-bottom: 0">
   <div class="product-img">
     <%= image_tag @product.photo %>
   </div>
@@ -18,7 +18,6 @@
     </div>
   </div>
 
-  <hr>
   <div class="product-favorite">
     <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
       <%= link_to  favorites_path(product: @product.id), remote: true, method: :post do %>
@@ -34,11 +33,21 @@
       <% end %>
     <% end %>
   </div>
-  <hr>
-  <h3>Alternatives</h3>
-  <ul>
-    <% @alternatives.each do |alternative| %>
-      <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li>
-    <% end %>
-  </ul>
+  <h3 class="alt-title">Alternatives</h3>  
+
+  
+</div>
+
+<div class="product-alts">
+  <% @alternatives.each do |alternative| %>
+    <div class="product-alt">
+      <div class="d-flex justify-content-center">
+        <%= image_tag alternative.photo %>
+      </div>
+      <div class="alt-infos align-items-center">
+        <h2><%= alternative.name %></h2>
+        <span class="badge badge-pill badge-warning m-0"><%= alternative.score %></span>
+      </div>
+    </div> 
+  <% end %>
 </div>

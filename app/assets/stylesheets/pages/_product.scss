@@ -25,4 +25,60 @@
 .product-favorite {
   display: flex;
   justify-content: center;
+  padding: 1rem 0;
+}
+
+.alt-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.product-alts {
+  padding: 0 0.5rem;
+  display: -webkit-inline-box;
+  overflow-x: scroll;  
+  margin: 0 0 12vh 0;
+  width: 100%;
+  border-top: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+}
+
+.product-alt {
+  overflow: hidden;
+  padding: 0.5rem;
+  max-width: 7rem;
+  h2 {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
+  }
+}
+
+
+.product-alt img {
+  height: 3rem;
+  width: 70%;
+  object-fit: contain;
+}
+
+.alt-infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0 0 0;
+  .product-description {
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .product-score {
+    display: flex;
+    align-items: center;
+  }
 }
