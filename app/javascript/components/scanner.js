@@ -8,7 +8,7 @@ const initScanner = () => {
   .then(() => {
     return ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
       playSoundOnScan: false,
-      vibrateOnScan: true,
+      vibrateOnScan: false,
     });
   })
   .then((barcodePicker) => {
@@ -20,8 +20,10 @@ const initScanner = () => {
 
     // barcodePicker is ready here, show a message every time a barcode is scanned
     barcodePicker.on("scan", (scanResult) => {
-      console.log(scanResult)
-      alert(scanResult.barcodes[0].data);
+      // console.log(scanResult)
+      // alert(scanResult.barcodes[0].data);
+      console.log(scanResult.barcodes[0].data)
+
     });
   });
 };
