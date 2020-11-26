@@ -9,6 +9,17 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <!-- PWA - SET UP : prepare app for A2HS (Add To HomeScreen) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- LINK the manifest (app/assets/config/manifest.js and manifest.json) to the layout -->
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+
+    <!--     We render the partial created for IOS PWA links (app/views/shared/_ios_pwa_links.html.erb) -->
+    <%= render 'shared/ios_pwa_links' %>
+
   </head>
 
   <body>
