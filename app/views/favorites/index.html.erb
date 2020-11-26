@@ -1,13 +1,13 @@
 <div class="container">
   <h1>Vos favoris</h1>
-  
+
   <% if @favorites.count.zero? %>
     <p><small>Ajoutez des produits à vos favoris</small></p>
   <% else %>
     <p><small>Vous avez <%= pluralize(@favorites.count,'produit', plural: 'produits') %> dans vos favoris</small></p>
   <% end %>
 
-  <div class="gallery-container"> 
+  <div class="gallery-container">
     <% if @favorites.count != 0 %>
       <% @favorites.each do |favorite| %>
         <div class="gallery-item">
@@ -18,7 +18,7 @@
             <i class="far fa-trash-alt"></i>
           <% end %>
         </div>
-      <% end %> 
-    <% end %>  
+      <% end %>
+    <% end %>
   </div>
 </div>
