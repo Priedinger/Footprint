@@ -1,7 +1,7 @@
 
-<%= form_for(@item) do %>
+<%= form_for(@item, html:{id: "scan_form"}) do %>
   <%= label_tag(:bar_code, "Bar code:") %>
-  <%= text_field_tag(:bar_code) %>
+  <%= text_field_tag(:bar_code, "", id: "scanned_bar_code" ) %>
   <%= submit_tag("Search") %>
 <% end %>
 
