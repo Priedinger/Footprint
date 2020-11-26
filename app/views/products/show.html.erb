@@ -18,7 +18,6 @@
     </div>
   </div>
 
-  <hr>
   <div class="product-favorite">
     <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
       <%= link_to  favorites_path(product: @product.id), remote: true, method: :post do %>
@@ -34,11 +33,44 @@
       <% end %>
     <% end %>
   </div>
-  <hr>
-  <h3>Alternatives</h3>
-  <ul>
-    <% @alternatives.each do |alternative| %>
-      <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li>
-    <% end %>
-  </ul>
+  <h3 class="alt-title">Alternatives</h3>
+  
+
+      <% @alternatives.each do |alternative| %>
+        <%= link_to product_path(alternative) do %>
+          <div class="product-alt">
+            <div class="alt-img">
+              <%= image_tag alternative.photo %>
+            </div>
+            <div class="alt-info">
+              <p><%= alternative.name %> - <%= alternative.score %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+  
 </div>
+
+<div class="product-alts">
+    <div class="product-alt border">
+      <img src="https://static.openfoodfacts.org/images/products/731/107/033/1165/front_fr.3.200.jpg" alt="">
+      <div class="product-infos">
+        <h2>Krisprolls</h2>
+      </div>
+    </div>
+
+    <div class="product-alt">
+      <img src="https://static.openfoodfacts.org/images/products/731/107/033/1165/front_fr.3.200.jpg" alt="">
+      <div class="product-infos">
+        <h2>Krisprolls</h2>
+      </div>
+    </div>
+    
+    <div class="product-alt">
+      <img src="https://static.openfoodfacts.org/images/products/731/107/033/1165/front_fr.3.200.jpg" alt="">
+      <div class="product-infos">
+        <h2>Krisprolls</h2>
+      </div>
+    </div>
+  </div>

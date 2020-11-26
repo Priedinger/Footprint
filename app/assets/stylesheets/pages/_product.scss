@@ -25,4 +25,35 @@
 .product-favorite {
   display: flex;
   justify-content: center;
+  padding: 1rem 0;
+}
+
+.alt-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.product-alts {
+  padding: 1rem 0;
+  display: -webkit-inline-box;
+  overflow-x:scroll;  
+  margin: 0 1rem 8vh 1rem;
+}
+
+.product-alt {
+  overflow: hidden;
+  background: white;
+  padding: 0.5rem;
+  h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+
+.product-alt img {
+  height: 3rem;
+  width: 70%;
+  object-fit: contain;
 }
