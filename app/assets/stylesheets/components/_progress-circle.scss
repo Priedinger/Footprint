@@ -5,8 +5,8 @@
   width: 1em;                     /* fixe la largeur */
   height: 1em;                    /* fixe la hauteur */
   border-radius: 50%;             /* rendu aspect circulaire */
-  border: .15em solid #FFF;       /* couleur de fond de l'anneau */
-  background-color: #FFF;         /* couleur de fond de la progress bar */
+  border: .15em solid $light-gray;       /* couleur de fond de l'anneau */
+  background-color: $white;         /* couleur de fond de la progress bar */
   flex-shrink: 0;
 }
 

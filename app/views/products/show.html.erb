@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding-bottom: 0">
   <div class="product-img">
     <%= image_tag @product.photo %>
   </div>
@@ -33,44 +33,21 @@
       <% end %>
     <% end %>
   </div>
-  <h3 class="alt-title">Alternatives</h3>
-  
-
-      <% @alternatives.each do |alternative| %>
-        <%= link_to product_path(alternative) do %>
-          <div class="product-alt">
-            <div class="alt-img">
-              <%= image_tag alternative.photo %>
-            </div>
-            <div class="alt-info">
-              <p><%= alternative.name %> - <%= alternative.score %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+  <h3 class="alt-title">Alternatives</h3>  
 
   
 </div>
 
 <div class="product-alts">
-    <div class="product-alt border">
-      <img src="https://static.openfoodfacts.org/images/products/731/107/033/1165/front_fr.3.200.jpg" alt="">
-      <div class="product-infos">
-        <h2>Krisprolls</h2>
-      </div>
-    </div>
-
+  <% @alternatives.each do |alternative| %>
     <div class="product-alt">
-      <img src="https://static.openfoodfacts.org/images/products/731/107/033/1165/front_fr.3.200.jpg" alt="">
-      <div class="product-infos">
-        <h2>Krisprolls</h2>
+      <div class="d-flex justify-content-center">
+        <%= image_tag alternative.photo %>
       </div>
-    </div>
-    
-    <div class="product-alt">
-      <img src="https://static.openfoodfacts.org/images/products/731/107/033/1165/front_fr.3.200.jpg" alt="">
-      <div class="product-infos">
-        <h2>Krisprolls</h2>
+      <div class="alt-infos align-items-center">
+        <h2><%= alternative.name %></h2>
+        <span class="badge badge-pill badge-warning m-0"><%= alternative.score %></span>
       </div>
-    </div>
-  </div>
+    </div> 
+  <% end %>
+</div>
