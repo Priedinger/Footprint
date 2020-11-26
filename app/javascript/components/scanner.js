@@ -3,7 +3,6 @@ import * as ScanditSDK from "scandit-sdk";
 const initScanner = () => {
 
   // utilisez cette ligne pour le local
-  //test
     const scandit = document.getElementById('scandit-barcode-picker')
     ScanditSDK.configure(`${scandit.dataset.apikey}`, {
     engineLocation: "https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/",
