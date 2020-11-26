@@ -1,6 +1,6 @@
 <div class="navbar d-flex justify-content-center">
   <ul class="list-inline d-flex list-inline justify-content-around">
-    <%= link_to root_path do%>
+    <%= link_to root_path do %>
       <li class="nav-item">
         <div class="text-center nav-button <%= 'active' if params[:controller] == 'pages' %>">
           <p><i class="fas fa-home"></i></p>
@@ -8,7 +8,7 @@
         </div>
       </li>
     <% end %>
-    <%= link_to tickets_path do%>
+    <%= link_to tickets_path do %>
       <li class="nav-item">
         <div class="text-center nav-button <%= 'active' if params[:controller] == 'tickets' && params[:action] == 'index' %>">
           <p><i class="fas fa-history"></i></p>
