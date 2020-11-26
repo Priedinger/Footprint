@@ -1,0 +1,23 @@
+.ticket-line {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px 0px;
+}
+
+.ticket-line-info {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.ticket-line .product-brand {
+  color:$gray;
+}
+
+.ticket-line .product-name {
+  font-weight: bold;
+}
+
+.ticket-icons {
+  text-align: right;
+}
