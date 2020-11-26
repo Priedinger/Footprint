@@ -1,41 +1,41 @@
-<div class="navbar d-flex justify-content-center">
+<div class="navbar d-flex justify-content-center" id="navbar">
   <ul class="list-inline d-flex list-inline justify-content-around">
     <%= link_to root_path do%>
       <li class="nav-item">
-        <div class="text-center nav-button active">
-          <i class="fas fa-home"></i>
+        <div class="text-center nav-button <%= 'active' if params[:controller] == 'pages' %>">
+          <p><i class="fas fa-home"></i></p>
            <p><%= "Dashboard" %></p>
         </div>
       </li>
     <% end %>
     <%= link_to tickets_path do%>
       <li class="nav-item">
-        <div class="text-center nav-button">
-          <i class="fas fa-history"></i>
+        <div class="text-center nav-button <%= 'active' if params[:controller] == 'tickets' && params[:action] == 'index' %>">
+          <p><i class="fas fa-history"></i></p>
           <p><%= "Historique" %></p>
         </div>
       </li>
     <% end %>
     <%= link_to new_ticket_path do%>
       <li class="nav-item">
-        <div class="text-center nav-button">
-          <i class="fas fa-camera"></i>
+        <div class="text-center nav-button <%= 'active' if params[:controller] == 'tickets' && params[:action] == 'new' %>">
+          <p><i class="fas fa-camera"></i></p>
           <p><%= "Scan" %></p>
         </div>
       </li>
     <% end %>
     <%= link_to favorites_path do%>
       <li class="nav-item">
-        <div class="text-center nav-button">
-          <i class="fas fa-star"></i>
+        <div class="text-center nav-button <%= 'active' if params[:controller] == 'favorites' %>">
+          <p><i class="fas fa-star"></i></p>
           <p><%= "Favoris" %></p>
         </div>
       </li>
     <% end %>
     <%= link_to settings_path do%>
       <li class="nav-item">
-        <div class="text-center nav-button">
-          <i class="fas fa-cog"></i>
+        <div class="text-center nav-button <%= 'active' if params[:controller] == 'settings' %>">
+          <p><i class="fas fa-cog"></i></p>
           <p><%= "Paramètres" %></p>
         </div>
       </li>
