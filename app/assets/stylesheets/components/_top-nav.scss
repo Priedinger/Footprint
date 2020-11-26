@@ -1,0 +1,27 @@
+.top-nav {
+  position: sticky;
+  top: 0;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0.5rem;
+  background-color: $white;
+  z-index: 1;
+  a {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    text-align: center;
+  }
+  img {
+    width: 1.5rem;
+  }
+  i {
+    color: $green;
+    font-size: 1.2rem;
+  }
+}
