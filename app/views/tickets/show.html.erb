@@ -13,19 +13,21 @@
 <hr>
 
 <% @ticket.items.each do |item| %>
-  <%= link_to product_path(item.product_id) do %>
-    <div class="ticket-line">
-      <%= image_tag Product.find(item.product_id).photo, class: "product-img" %>
-      <div class="ticket-line-info">
-        <% if item.product_id %>
-        <p class="product-name"><%= Product.find(item.product_id).name%></p>
-        <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
-          <p><span class="badge badge-pill badge-warning">Moyen</span></p>
-        <% else %>
-        <% end %>
+  <% if  item.product_id?%>
+    <%= link_to product_path(item.product_id) do %>
+      <div class="ticket-line">
+        <%= image_tag Product.find(item.product_id).photo, class: "product-img" %>
+        <div class="ticket-line-info">
+          <% if item.product_id %>
+          <p class="product-name"><%= Product.find(item.product_id).name%></p>
+          <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
+            <p><span class="badge badge-pill badge-warning">Moyen</span></p>
+          <% else %>
+          <% end %>
+        </div>
+        <i class="fas fa-chevron-right"></i>
       </div>
-      <i class="fas fa-chevron-right"></i>
-    </div>
+    <% end %>
   <% end %>
 <% end %>
 </div>

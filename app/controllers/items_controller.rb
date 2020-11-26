@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
 
 
   def show
+    @ticket = Ticket.find(params[:ticket_id])
     @unidentified_item = Item.find(params[:id])
   end
 
