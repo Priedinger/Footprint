@@ -1,0 +1,28 @@
+.product-img {
+  display: flex;
+  justify-content: center;
+}
+
+.product-infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  .product-description {
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .product-score {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.product-favorite {
+  display: flex;
+  justify-content: center;
+}

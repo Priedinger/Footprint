@@ -1,31 +1,44 @@
-<h1>Fiche produit: <%= @product.name%></h1>
+<div class="container">
+  <div class="product-img">
+    <%= image_tag @product.photo %>
+  </div>
+  <div class="product-infos">
+    <div class="product-description">
+      <h2><%= @product.name%></h2>
+      <p><em><%= @product.brand%></em></p>
+      <span class="badge badge-success">Catégorie</span>
+    </div>
+    <div class="product-score">
+      <div class="progress-circle" data-value="<%= @product.score%>">
+        <div class="progress-masque">
+          <div class="progress-barre"></div>
+          <div class="progress-sup50"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= image_tag @product.photo %>
+  <hr>
+  <div class="product-favorite">
+    <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
+      <%= link_to  favorites_path(product: @product.id), remote: true, method: :post do %>
+        <%# <i class="far fa-star" id="favorite"></i> %>
+        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Ajouter à mes favoris</button>
+      <% end %>
+    <% end %>
 
-<p>Marque :<%= @product.brand%></p>
-<p>Catégorie :<%= @product.category%></p>
-<p>Score :<%= @product.score%></p>
-<p>Nom générique :<%= @product.generic_name%></p>
-<p>Code bar :<%= @product.bar_code%></p>
-
-<hr>
-<h3>Favoris</h3>
-<% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
-  <%= link_to  favorites_path(product: @product.id), method: :post do %>
-    <i class="far fa-star" id="favorite"></i>
-  <% end %>
-<% end %>
-
-<% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
-  <%= link_to favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), method: :delete do %>
-    <i class="fas fa-star" id="notfavorite"></i>
-  <% end %>
-<% end %>
-<hr>
-<h3>Alternatives</h3>
-<ul>
-  <% @alternatives.each do |alternative| %>
-    <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li>
-  <% end %>
-</ul>
-
+    <% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
+      <%= link_to favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), remote: true, method: :delete do %>
+        <%# <i class="fas fa-star" id="notfavorite"></i> %>
+        <button type="button" class="btn btn-outline-danger"><i class="fas fa-minus" style="margin-right: 0.5rem;"></i>Retirer de mes favoris</button>
+      <% end %>
+    <% end %>
+  </div>
+  <hr>
+  <h3>Alternatives</h3>
+  <ul>
+    <% @alternatives.each do |alternative| %>
+      <li><%= link_to alternative.name, product_path(alternative) %> - <%= alternative.brand %> - <%= alternative.score %></li>
+    <% end %>
+  </ul>
+</div>
