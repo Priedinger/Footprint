@@ -5,4 +5,8 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<div id="scandit-barcode-picker" style="width: 100%; height: 100%;"></div>
+<% if Rails.env.production? %>
+  <div id="scandit-barcode-picker" data-apikey="ENV['SCANDIT-PROD-APIKEY']" style="width: 100%; height: 100%;"></div>
+<% else %>
+  <div id="scandit-barcode-picker" data-apikey="ENV['SCANDIT-DEV-APIKEY']" style="width: 100%; height: 100%;"></div>
+<% end %>
