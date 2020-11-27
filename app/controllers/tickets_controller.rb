@@ -1,3 +1,4 @@
+require "google/cloud/vision"
 class TicketsController < ApplicationController
 
   def index
@@ -39,6 +40,22 @@ class TicketsController < ApplicationController
     @ticket.destroy
     redirect_to tickets_path
   end
+
+# Google::Cloud::Vision::ImageAnnotator#document_text_detection
+# image_annotator = Google::Cloud::Vision::ImageAnnotator.new
+
+# detect_obj = image_annotator.object_localization_detection image: 'images/passport.png'
+
+# detect_obj.responses.each do |response|
+#   response.localized_object_annotations.each do |object|
+#     puts "#{object.name} (confidence: #{object.score})"
+#     puts "Normalized bounding polygon vertices:"
+#     object.bounding_poly.normalized_vertices.each do |vertex|
+#       puts " - (#{vertex.x}, #{vertex.y})"
+#     end
+#   end
+# end
+
 
 private
 
