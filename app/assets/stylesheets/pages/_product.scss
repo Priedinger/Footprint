@@ -31,6 +31,7 @@
 .alt-title {
   font-size: 1rem;
   font-weight: 700;
+  padding-top: 1rem;
 }
 
 .product-alts {
@@ -39,14 +40,18 @@
   overflow-x: scroll;  
   margin: 0 0 12vh 0;
   width: 100%;
-  border-top: 1px solid $light-gray;
-  border-bottom: 1px solid $light-gray;
+  a {
+    display: block;
+  }
 }
 
 .product-alt {
   overflow: hidden;
   padding: 0.5rem;
   max-width: 7rem;
+  border: 1px solid $light-gray;
+  margin-right: 0.5rem;
+
   h2 {
     font-size: 0.8rem;
     font-weight: bold;
