@@ -167,7 +167,7 @@ pompot = Product.new(
   category_agribalyse: "test")
 pompot.save
 
-pompot_item = Item.new(description: "Creme Vanille Danette", product_id: danette.id)
+pompot_item = Item.new(description: "pompot", product_id: danette.id)
 pompot_item.save
 
 alter1 = Product.new(
