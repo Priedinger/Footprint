@@ -157,6 +157,42 @@ danette.save
 danette_item = Item.new(description: "Creme Vanille Danette", product_id: danette.id)
 danette_item.save
 
+pompot = Product.new(
+  bar_code: "3021760400043",
+  name: "Pomme Banane 90 g",
+  photo: "https://static.openfoodfacts.org/images/products/302/176/040/0043/front_fr.48.200.jpg",
+  generic_name: "Compote multifruit pomme banane allégée en sucres (30 % de sucres en moins)",
+  brand: "Materne,Pom’ Potes",
+  score: "13",
+  category_agribalyse: "test")
+pompot.save
+
+pompot_item = Item.new(description: "Creme Vanille Danette", product_id: danette.id)
+pompot_item.save
+
+alter1 = Product.new(
+  bar_code: "3045320076127",
+  category: "en:dairies",
+  name: "Compote de pommes Andros",
+  photo:
+  "https://static.openfoodfacts.org/images/products/304/532/007/6127/front_fr.64.200.jpg",
+  generic_name: "Compote de pommes",
+  brand: "Andros",
+  score: "76",
+  category_agribalyse: "test")
+alter1.save
+
+alter2 = Product.new(
+  bar_code: "3045320083453",
+  category: "en:dairies",
+  name: "compote pomme vanille",
+  photo:
+  "https://static.openfoodfacts.org/images/products/304/532/008/3453/front_fr.68.200.jpg",
+  generic_name: "Spécialité de pommes à la vanille",
+  brand: "Andros",
+  score: "65",
+  category_agribalyse: "test")
+alter2.save
 
 puts "Adding 4 products to Favorites for Elsa"
 
