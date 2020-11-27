@@ -5,10 +5,8 @@ class ItemsController < ApplicationController
 
   def index
     @ticket = Ticket.find(params[:ticket_id])
-    @unidentified_items = @ticket.items.where(product_id: nil)
     authorize @ticket, :ticket_items?
   end
-
 
   def show
     @ticket = Ticket.find(params[:ticket_id])
@@ -29,7 +27,7 @@ class ItemsController < ApplicationController
     if @product_in_db
       @item.update(product_id: @product_in_db.id)
 
-        redirect_to ticket_items_path(@ticket)
+        redirect_to ticket_path(@ticket)
     else
       # call API open food fact avec le code bar
       url = "https://world.openfoodfacts.org/api/v0/product/#{params[:bar_code]}.json"
@@ -55,7 +53,7 @@ class ItemsController < ApplicationController
           )
         # attribution de l'id du nouveau produit à l'item
         @item.update(product_id: @new_product.id)
-        redirect_to ticket_items_path(@ticket)
+        redirect_to ticket_path(@ticket)
       else
         render :edit
       end

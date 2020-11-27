@@ -34,7 +34,7 @@ class TicketsController < ApplicationController
         TicketLine.create(ticket_id: @ticket.id, item_id: new_item.id, quantity: 1)
       end
     end
-    redirect_to ticket_items_path(@ticket)
+    redirect_to ticket_path(@ticket)
   end
 
   def destroy
