@@ -18,9 +18,10 @@
           </div>
           <div class="ticket-line-info">
             <% if item.product_id %>
-              <p class="product-name"><%= Product.find(item.product_id).name%></p>
-              <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
-              <p><span class="badge badge-pill badge-warning">Moyen</span></p>
+            <p class="product-name"><%= Product.find(item.product_id).name%></p>
+            <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
+            <p style="margin: 0"><span class="badge badge-pill badge-warning">Moyen</span></p>
+            <% else %>
             <% end %>
           </div>
           <i class="fas fa-chevron-right"></i>
@@ -30,12 +31,14 @@
   <% end %>
 
   <% unless @unidentified_items.empty?  %>
+
     <p><strong>Ces produits n'ont pas été identifiés</strong></p>
     <% @unidentified_items.each do |item| %>
       <div class="ticket-line ticket-line-unidentified">
         <%= item.description %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
         <%= link_to edit_item_path(item, ticket_id: @ticket.id) do %>
           <i class="fas fa-camera"></i>
+
         <% end %>
       </div>
     <% end %>
