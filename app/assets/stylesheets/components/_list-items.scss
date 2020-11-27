@@ -1,0 +1,22 @@
+.list-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $light-gray;
+  padding: 5px 0px;
+}
+
+.scan-badge {
+  font-size: 12px;
+  border: 1px solid lightgray;
+  padding: 2px 15px;
+  border-radius: 20px;
+}
+
+.analyse-ticket {
+  position: absolute;
+  bottom: 25px;
+  border: 1px solid lightgray;
+  padding: 2px 15px;
+  border-radius: 5px;
+}
