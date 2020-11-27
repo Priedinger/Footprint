@@ -33,22 +33,24 @@
       <% end %>
     <% end %>
   </div>
-  <h3 class="alt-title">Alternatives</h3>  
-  
+  <h3 class="alt-title">Alternatives</h3>
+
 </div>
 
 <div class="product-alts">
   <% @alternatives.each do |alternative| %>
-    <%= link_to product_path(alternative) do  %>
-      <div class="product-alt">
-        <div class="d-flex justify-content-center">
-          <%= image_tag alternative.photo %>
+    <% if  alternative.photo? %>
+      <%= link_to product_path(alternative) do  %>
+        <div class="product-alt">
+          <div class="d-flex justify-content-center">
+              <%= image_tag alternative.photo %>
+          </div>
+          <div class="alt-infos align-items-center">
+            <h2><%= alternative.name %></h2>
+            <span class="badge badge-pill badge-warning m-0"><%= alternative.score %></span>
+          </div>
         </div>
-        <div class="alt-infos align-items-center">
-          <h2><%= alternative.name %></h2>
-          <span class="badge badge-pill badge-warning m-0"><%= alternative.score %></span>
-        </div>
-      </div> 
+      <% end %>
     <% end %>
   <% end %>
 </div>
