@@ -8,6 +8,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @title = "Ticket n°#{@ticket.id}"
+    @unidentified_items = @ticket.items.where(product_id: nil)
     authorize @ticket
   end
 
