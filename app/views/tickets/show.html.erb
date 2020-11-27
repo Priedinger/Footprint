@@ -29,9 +29,8 @@
   <% end %>
 
   <% @unidentified_items = @ticket.items.where(product_id: nil) %>
-  <% if !@unidentified_items.nil?  %>
+  <% unless @unidentified_items.empty?  %>
     <h1> Ces produits n'ont pas été identifiés </h1>
-
     <div class="container">
       <ul>
         <% @unidentified_items.each do |item| %>
