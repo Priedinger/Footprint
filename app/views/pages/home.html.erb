@@ -19,7 +19,11 @@
     <div class="figures-card">
       <div>
         <h4>favoris</h4>
-        <h3><%= @favorites.count %></h3>
+        <% if @favorites.count.nil? %>
+          <h3> 0 </h3>
+        <% else %>
+          <h3><%= @favorites.count %></h3>
+        <% end %>
         <%= link_to favorites_path do %>
           <div class="circle-btn">
             <i class="fas fa-chevron-right"></i>
