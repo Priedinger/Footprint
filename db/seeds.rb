@@ -108,6 +108,7 @@ chips = Product.new(
   brand: "Tyrrells")
 chips.save
 
+
 chips_item = Item.new(description: "Chips Tyr", product_id: chips.id)
 chips_item.save
 
@@ -157,6 +158,18 @@ danette_item = Item.new(description: "Creme Vanille Danette", product_id: danett
 danette_item.save
 
 
+puts "Adding 4 products to Favorites for Elsa"
+
+puts "Add chips"
+chips_fav = Favorite.new(user_id: elsa.id, product_id: chips.id)
+
+puts "Add madeleine"
+madeleine_fav = Favorite.new(user_id: elsa.id, product_id: madeleine.id)
+
+puts "Crevettes"
+crevettes_dec_fav = Favorite.new(user_id: elsa.id, product_id: crevettes_dec.id)
+
+puts "Mozza"
+mozzarella_galbani_fav = Favorite.new(user_id: elsa.id, product_id: mozzarella_galbani.id)
+
 puts "Finished!"
-
-
