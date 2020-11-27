@@ -1,14 +1,14 @@
 <div class="container">
-  <h1>Items</h1>
-  <ul>
-    <% @unidentified_items.each do |item| %>
-      <li>
-        <%= link_to item.description, item_path(item, ticket_id: @ticket.id) %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
-      </li>
-    <% end %>
-  </ul>
-</div>
+    <h1>Mes produits</h1>
 
+      <% @unidentified_items.each do |item| %>
+      <div class="list-items">
+        <%= link_to item.description, item_path(item, ticket_id: @ticket.id) %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
+        <span class="scan-badge">Scanner</span>
+      <% end %>
+
+    </div>
 <!-- Propose de voir l'analyse du ticket que si il y a au moins 1 product identifié -->
 
-  <%= link_to "Voir l'analyse du ticket", ticket_path(@ticket) %>
+  <%= link_to "Voir l'analyse du ticket", ticket_path(@ticket), :class => "analyse-ticket" %>
+</div>
