@@ -27,16 +27,16 @@
         <% end %>
       </div>
     </div>
+  </div>
 
-    <div class="figures-card" id="score-card">
-      <h4>Votre score moyen</h4>
-      <div class="progress-circle" data-value="<%= 74 %>" id="progress-hp">
-        <div class="progress-masque">
+  <h4 class="mb-5">Votre score moyen</h4>
+  <div class="d-flex justify-content-center mt-5">
+      <div class="progress-circle mt-5 mb-3" data-value="<%= 74 %>" style="transform: scale(3.5);">
+        <div class="progress-masque" >
           <div class="progress-barre"></div>
           <div class="progress-sup50"></div>
         </div>
       </div>
-    </div>
   </div>
 
   <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
