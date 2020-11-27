@@ -9,7 +9,7 @@
   z-index: 1;
 
   .nav-button {
-    min-width: 80px;
+    min-width: 64px;
   }
 
   .active {
@@ -29,7 +29,7 @@
   }
 
   li p {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     display: block;
     padding: 0rem 0.5rem;
     color: $gray;
