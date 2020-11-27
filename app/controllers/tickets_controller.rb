@@ -1,4 +1,3 @@
-require "google/cloud/vision"
 class TicketsController < ApplicationController
 
   def index
