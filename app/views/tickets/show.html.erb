@@ -20,7 +20,7 @@
             <% if item.product_id %>
             <p class="product-name"><%= Product.find(item.product_id).name%></p>
             <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
-              <p><span class="badge badge-pill badge-warning">Moyen</span></p>
+            <p style="margin: 0"><span class="badge badge-pill badge-warning">Moyen</span></p>
             <% else %>
             <% end %>
           </div>
@@ -32,7 +32,7 @@
 
   <% @unidentified_items = @ticket.items.where(product_id: nil) %>
   <% unless @unidentified_items.empty?  %>
-    <h1> Ces produits n'ont pas été identifiés </h1>
+    <h1 class="mt-3"> Ces produits n'ont pas été identifiés </h1>
     <div class="container">
       <ul>
         <% @unidentified_items.each do |item| %>

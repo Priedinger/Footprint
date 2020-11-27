@@ -8,14 +8,23 @@
 .ticket-line-info {
   flex-grow: 1;
   padding: 0px 10px;
+  margin: 0.5rem 0;
 }
 
 .ticket-line .product-brand {
   color:$gray;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
 }
 
 .ticket-line .product-name {
   font-weight: bold;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
 }
 
 .ticket-icon {
@@ -23,11 +32,12 @@
 }
 
 .product-img-ticket {
-  width: 50px;
+  width: auto;
   height: 50px;
   border-radius: 5%;
   text-align: center;
 }
 .img-ticket{
-  height: 100%;
+  height: 50px;
+  width: auto;
 }
