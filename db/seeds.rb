@@ -108,8 +108,54 @@ chips = Product.new(
   brand: "Tyrrells")
 chips.save
 
+
 chips_item = Item.new(description: "Chips Tyr", product_id: chips.id)
 chips_item.save
+
+puts "8 - creating Camembert"
+camembert = Product.new(
+  bar_code: "3275240312016",
+  category: "en:dairies",
+  name: "Camembert",
+  photo:
+  "https://static.openfoodfacts.org/images/products/327/524/031/2016/front_fr.64.200.jpg",
+  generic_name: "Camembert au lait pasteurisé",
+  brand: "Bons Mayennais,Vaubernier")
+camembert.save
+
+
+camembert_item = Item.new(description: "Camembert", product_id: chips.id)
+camembert_item.save
+
+puts "9 - creating Eau Mont Rouc"
+eau_roucous = Product.new(
+  bar_code: "3257971309114",
+  category: "en:beverages",
+  name: "Eau minérale naturelle",
+  photo:
+  "https://static.openfoodfacts.org/images/products/325/797/130/9114/front_fr.25.200.jpg",
+  generic_name: "",
+  brand: "Mont Roucous"
+  )
+eau_roucous.save
+
+eau_roucous_item = Item.new(description: "Eau Mont Rouc", product_id: eau_roucous.id )
+eau_roucous_item.save
+
+puts "10 - creating Creme Vanille Danette"
+
+danette = Product.new(
+  bar_code: "3033491279720",
+  category: "en:dairies",
+  name: "Danette vanille",
+  photo:
+  "https://static.openfoodfacts.org/images/products/303/349/127/9720/front_fr.21.200.jpg",
+  generic_name: "Crèmes dessert saveur vanille",
+  brand: "Danette")
+danette.save
+
+danette_item = Item.new(description: "Creme Vanille Danette", product_id: danette.id)
+danette_item.save
 
 
 puts "Adding 4 products to Favorites for Elsa"
@@ -125,6 +171,5 @@ crevettes_dec_fav = Favorite.new(user_id: elsa.id, product_id: crevettes_dec.id)
 
 puts "Mozza"
 mozzarella_galbani_fav = Favorite.new(user_id: elsa.id, product_id: mozzarella_galbani.id)
-
 
 puts "Finished!"

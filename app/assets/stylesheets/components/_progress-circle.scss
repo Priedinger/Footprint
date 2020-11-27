@@ -6,7 +6,7 @@
   height: 1em;                    /* fixe la hauteur */
   border-radius: 50%;             /* rendu aspect circulaire */
   border: .15em solid $light-gray;       /* couleur de fond de l'anneau */
-  background-color: $white;         /* couleur de fond de la progress bar */
+
   flex-shrink: 0;
 }
 
@@ -164,4 +164,17 @@
   align-items: center;
   justify-content: center;
 
+}
+
+#progress-hp {
+  font-size: 6rem;
+  font-weight: 700;
+  width: 1.5em;                     /* fixe la largeur */
+  height: 1.5em;                    /* fixe la hauteur */
+  border-radius: 50%;             /* rendu aspect circulaire */
+  border: .3em solid $light-gray;       /* couleur de fond de l'anneau */
+}
+
+#progress-hp-barre {
+  transform: scale(2);
 }

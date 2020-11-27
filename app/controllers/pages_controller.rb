@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @title = "Dashboard"
+    @favorites = current_user.favorites
+    @tickets = current_user.tickets
   end
 
   def settings
