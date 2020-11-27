@@ -1,5 +1,45 @@
-<h1 id="title"><%= @title %></h1>
-<h2></h2>
+<div class="container" style="padding-bottom: 0">
 
-<%= link_to 'Scanner/Créer un ticket', new_ticket_path %>
+  <h1 id="title"><%= @title %></h1>
 
+  <div class="figures-grid">
+
+    <div class="figures-card">
+      <div>
+        <h4>tickets</h4>
+        <h3><%= @tickets.count %></h3>
+        <%= link_to tickets_path do  %>
+          <div class="circle-btn">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="figures-card">
+      <div>
+        <h4>favoris</h4>
+        <h3><%= @favorites.count %></h3>
+        <%= link_to favorites_path do %>
+          <div class="circle-btn">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="figures-card" id="score-card">
+      <div>
+        <h4>Votre score moyen</h4>
+        <div class="d-flex justify-content-center align-items-baseline">
+        <h3>74</h3><p>/100</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
+    <p><i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Nouveau ticket</p>
+  <% end %>
+
+</div>
