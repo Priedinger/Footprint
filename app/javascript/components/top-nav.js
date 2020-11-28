@@ -9,10 +9,10 @@ const initTopnav = () => {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= (rect.top)) {
         secondTitle.classList.remove('hidden');
-        topNav.classList.add('top-nav-border');
+        // topNav.classList.add('top-nav-border');
       } else if (window.scrollY < (rect.top)) {
         secondTitle.classList.add('hidden');
-        topNav.classList.remove('top-nav-border');
+        // topNav.classList.remove('top-nav-border');
       }
     });
   }
