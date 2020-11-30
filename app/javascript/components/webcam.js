@@ -7,7 +7,7 @@ const initWebCam = () => {
   const webcam = new Webcam(webcamElement, 'user', canvasElement);
   const btn = document.getElementById('photo-take');
   
-  webcam.start()
+  webcam.start({facingMode: 'enviroment'})
      .then(result =>{
         console.log("webcam started");
      })
@@ -18,7 +18,9 @@ const initWebCam = () => {
   btn.addEventListener('click', function() {
     let picture = webcam.snap();
     console.log(picture);
-    webcam.stop();
+    // webcam.stop();
+    document.getElementById('ticket_photo').value = picture;
+    document.getElementById('new_ticket').submit();
   })
 }
 
