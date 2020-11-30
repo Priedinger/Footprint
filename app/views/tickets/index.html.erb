@@ -1,6 +1,6 @@
 <div class="container">
   <h1 id="title"><%= @title %></h1>
- 
+
   <% @tickets.each do |ticket| %>
     <%= link_to ticket_path(ticket) do %>
     <div class="ticket-card">
@@ -22,5 +22,4 @@
     </div>
     <% end %>
   <% end %>
-
 </div>

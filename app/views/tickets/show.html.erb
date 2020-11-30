@@ -1,25 +1,33 @@
 <div class="container">
-  <h1 id="title"><%= @title %></h1>
-  <p><small>Scanné le <%= @ticket.created_at.strftime("%d/%m/%Y à %k:%M") %></small></p>
-
-  <div class="ticket-icon">
-    <%= link_to ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
-    <i class="far fa-trash-alt"></i>
-    <% end %>
+  <div class="ticket-title">
+    <h1 id="title"><%= @title %></h1>
+      <%= link_to ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
+      <i class="far fa-trash-alt"></i>
+      <% end %>
   </div>
+  <p class="ticket-show-date"><small>Scanné le <%= @ticket.created_at.strftime("%d/%m/%Y à %k:%M") %></small></p>
+
 
  <% unless @unidentified_items.empty?  %>
-
-    <p><strong>Ces produits n'ont pas été identifiés</strong></p>
+  <% if @unidentified_items.count == 1 %>
+    <p class="ticket-show-title"><strong>Ce produit n'a pas été identifié</strong></p>
+  <% else %>
+    <p class="ticket-show-title"><strong>Ces <%= @unidentified_items.count %> produits n'ont pas été identifiés</strong></p>
+  <% end %>
     <% @unidentified_items.each do |item| %>
-      <div class="ticket-line ticket-line-unidentified">
-        <%= item.description %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
-        <%= link_to edit_item_path(item, ticket_id: @ticket.id) do %>
-          <i class="fas fa-camera"></i>
-
-        <% end %>
+      <%= link_to edit_item_path(item, ticket_id: @ticket.id) do %>
+      <div class="ticket-line-unidentified">
+        <p> <%= item.description %> </p>
+        <i class="fas fa-camera"></i>
       </div>
+      <% end %>
     <% end %>
+  <% end %>
+
+  <% if @ticket.items.count == 1 %>
+    <p class="ticket-show-title"><strong> <%= @ticket.items.count %> produits identifié </strong></p>
+  <% else %>
+    <p class="ticket-show-title"><strong> <%= @ticket.items.count %> produits identifiés </strong></p>
   <% end %>
   <% @ticket.items.each do |item| %>
     <% if  item.product_id?%>
