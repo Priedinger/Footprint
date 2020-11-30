@@ -10,6 +10,9 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @title = "Ticket n°#{@ticket.id}"
     @unidentified_items = @ticket.items.where(product_id: nil)
+    unless @ticket.items.where.not(product_id: nil).count == 0
+      @ticket_score = calculate_ticket_score(@ticket)
+    end
     authorize @ticket
   end
 
@@ -18,7 +21,6 @@ class TicketsController < ApplicationController
     # read_ticket
   end
 
-  
   def create
     # string séparées par des virgules ex: "papier toilette, hule d'olive, déodorant"
     @ticket = Ticket.new(tickets_params)
@@ -43,21 +45,21 @@ class TicketsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @ticket = Ticket.find(params[:id])
     @ticket.destroy
     redirect_to tickets_path
   end
-  
+
   private
-  
+
   def tickets_params
     params.require(:ticket).permit(:photo, :user_id)
   end
 
   def read_ticket(photo)
-    
+
     file = File.open('new_ticket.jpg',"wb") do |f|
       f.write(Base64.decode64(photo.split('data:image/png;base64,').last))
     end
@@ -75,5 +77,13 @@ class TicketsController < ApplicationController
     end
     puts text
     return text
+  end
+
+  def calculate_ticket_score(ticket)
+    total_score = 0
+    ticket.items.where.not(product_id: nil).each do |item|
+      total_score += item.product.score
+    end
+    ticket_score = total_score / ticket.items.where.not(product_id: nil).count
   end
 end
