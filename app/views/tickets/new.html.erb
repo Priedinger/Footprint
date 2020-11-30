@@ -3,8 +3,7 @@
 <button id="photo-take">photo</button>
 
 <div class="container pt-5 col-6">
-  <%= simple_form_for @ticket do |f| %>
-    <%= f.input :photo, label: 'Mon ticket'%>
-    <%= f.button :submit, "Analyser", :class => "btn btn-success w-100" %>
+  <%= simple_form_for @ticket, multipart: true do |f| %>
+    <%= f.input :photo, as: :hidden %>
   <% end %>
 </div>
