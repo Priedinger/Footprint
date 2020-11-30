@@ -47,7 +47,13 @@
           </div>
           <div class="alt-infos align-items-center">
             <h2><%= alternative.name %></h2>
-            <span class="badge badge-pill badge-warning m-0"><%= alternative.score %></span>
+            <% if alternative.score < 33 %>
+              <span class="badge badge-pill badge-warning m-0" style="background-color: $red;"><%= alternative.score %></span>
+            <% elsif alternative.score < 66 %>
+              <span class="badge badge-pill badge-warning m-0" style="background-color: $orange;"><%= alternative.score %></span>
+            <% else %>
+              <span class="badge badge-pill badge-warning m-0" style="background-color: $green;"><%= alternative.score %></span>
+            <% end %>
           </div>
         </div>
       <% end %>
