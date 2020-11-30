@@ -19,7 +19,15 @@
             <% if item.product_id %>
             <p class="product-name"><%= Product.find(item.product_id).name%></p>
             <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
-            <p style="margin: 0"><span class="badge badge-pill badge-warning">Moyen</span></p>
+              <% unless item.product.score.nil? %>
+                <% if item.product.score < 33 %>
+                  <p style="margin: 0"><span class="badge badge-pill badge-warning" style= "background-color: #FF5154;"> Mauvais </span></p>
+                 <% elsif item.product.score < 66 %>
+                   <p style="margin: 0"><span class="badge badge-pill badge-warning" style= "background-color: #E67E22;"> Moyen </span></p>
+                <% else %>
+                  <p style="margin: 0"><span class="badge badge-pill badge-warning" style= "background-color: #0AAF90;"> Bon </span></p>
+                <% end %>
+              <% end %>
             <% else %>
             <% end %>
           </div>
