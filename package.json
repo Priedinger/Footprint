@@ -10,7 +10,8 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "scandit-sdk": "^5.4.2",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "webcam-easy": "^1.0.5"
   },
   "version": "0.1.0",
   "devDependencies": {

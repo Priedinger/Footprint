@@ -1,3 +1,7 @@
+<video id="webcam" autoplay playsinline width="640" height="480"></video>
+<canvas id="canvas" class="d-none"></canvas>
+<button id="photo-take">photo</button>
+
 <div class="container pt-5 col-6">
   <%= simple_form_for @ticket do |f| %>
     <%= f.input :photo, label: 'Mon ticket'%>

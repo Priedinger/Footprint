@@ -30,6 +30,7 @@ import { initScanner } from "../components/scanner";
 // import { initSelect2 } from '../components/init_select2';
 import { initProgressBar } from '../components/progress-circle';
 import { initTopnav } from '../components/top-nav';
+import { initWebCam } from '../components/webcam';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initScanner();
   initProgressBar();
   initTopnav();
+  initWebCam();
 });
