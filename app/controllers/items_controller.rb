@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
         @new_product = Product.create(
           score: score,
           bar_code: params[:bar_code],
-          category: product["product"]["categories_tags"].first,
+          category: clean_category(product["product"]["categories_tags"]),
           name: product["product"]["product_name_fr"],
           photo: product["product"]["selected_images"]["front"]["small"]["fr"],
           generic_name: product["product"]["generic_name"],
@@ -66,4 +66,31 @@ private
   def items_params
     params.require(:item).permit(:description, :product_id)
   end
+
+  def clean_category(off_category)
+    if off_category.include?("en:meats") || off_category.include?("en:seafood")
+      return "Viandes et poissons"
+    elsif off_category.include?("en:fresh-vegetables") || off_category.include?("en:fruits")
+      return "Fruits et légumes"
+    elsif off_category.include?("en:non-food-products")
+      return "Produits non alimentaires"
+    elsif off_category.include?("en:boissons") || off_category.include?("en:beverages")
+      return "Boissons"
+    elsif off_category.include?("en:dairies")
+      return "Produits laitiers"
+    elsif off_category.include?("en:snacks")
+      return "Snacks"
+    elsif off_category.include?("en:viennoiseries") || off_category.include?("en:breads")
+      return "Pains et patisseries"
+    elsif off_category.include?("en:frozen-foods")
+      return "Surgelés"
+    elsif off_category.include?("en:desserts")
+      return "Desserts"
+    elsif off_category.include?("en:plant-based-foods-and-beverages")
+      return "Produits d'origine végétale"
+    else
+      return "Autres"
+    end
+  end
+
 end

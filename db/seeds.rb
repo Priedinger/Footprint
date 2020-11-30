@@ -19,7 +19,7 @@ puts "creating 7 items associated to products > identified items"
 puts "1 - creating Eau Cristalline"
 eau_cristalline = Product.new(
   bar_code: "3274080005003",
-  category: "en:boissons",
+  category: "Boissons",
   name: "Eau de source",
   photo: "https://static.openfoodfacts.org/images/products/327/408/000/5003/front_fr.609.200.jpg",
   generic_name: "Eau de source naturelle",
@@ -32,7 +32,7 @@ eau_cristalline_item.save
 puts "2 - creating Flan Les 2 vaches"
 flan_caramel_2_vaches = Product.new(
   bar_code: "3661344795372",
-  category: "en:dairies",
+  category: "Produits laitiers",
   name: "Flan Bio à la vanille nappé de caramel",
   photo: "https://static.openfoodfacts.org/images/products/366/134/479/5372/front_fr.30.200.jpg",
   generic_name: "Flan Bio à la vanille nappé de caramel",
@@ -47,7 +47,7 @@ flan_caramel_2_vaches_item.save
 puts "3 - creating Mozza"
 mozzarella_galbani = Product.new(
   bar_code: "8000430138719",
-  category: "en:dairies",
+  category: "Produits laitiers",
   name: "Mozzarella",
   photo: "https://static.openfoodfacts.org/images/products/800/043/013/8719/front_fr.68.200.jpg",
   generic_name: "",
@@ -60,7 +60,7 @@ mozzarella_galbani_item.save
 puts "4 - creating Champagne"
 champagne_mumm = Product.new(
   bar_code: "3043700103715",
-  category: "en:beverages",
+  category: "Boissons",
   name: "Cordon Rouge",
   photo: "https://static.openfoodfacts.org/images/products/304/370/010/3715/front_fr.11.200.jpg",
   generic_name: "Champagne brut",
@@ -74,7 +74,7 @@ champagne_mumm_item.save
 puts "5 - creating Crevettes"
 crevettes_dec = Product.new(
   bar_code: "3336374402247",
-  category: "en:seafood",
+  category: "Viandes et poissons",
   name: "Crevettes décortiquées nature",
   photo: "https://static.openfoodfacts.org/images/products/333/637/440/2247/front_fr.24.200.jpg",
   generic_name: "crevettes décortiquées cuites réfrigérées",
@@ -88,7 +88,7 @@ crevettes_dec_item.save
 puts "6 - creating Madeleine"
 madeleine = Product.new(
   bar_code: "3178530410143",
-  category: "en:snacks",
+  category: "Snacks",
   name: "Petites Madeleine pépites chocolat",
   photo: "https://static.openfoodfacts.org/images/products/317/853/041/0143/front_fr.74.200.jpg",
   generic_name: "Madeleines aux pépites de chocolat (5%) et pépites de chocolat au lait (2,7%)",
@@ -101,7 +101,7 @@ madeleine_item.save
 puts "7 - creating Chips"
 chips = Product.new(
   bar_code: "5056051802464",
-  category: "en:snacks",
+  category: "Snacks",
   name: "Tyrells swanky veg",
   photo: "https://static.openfoodfacts.org/images/products/505/605/180/2464/front_fr.3.200.jpg",
   generic_name: "Chips de panais, patate douce et banane plantain.",
@@ -115,7 +115,7 @@ chips_item.save
 puts "8 - creating Camembert"
 camembert = Product.new(
   bar_code: "3275240312016",
-  category: "en:dairies",
+  category: "Produits laitiers",
   name: "Camembert",
   photo:
   "https://static.openfoodfacts.org/images/products/327/524/031/2016/front_fr.64.200.jpg",
@@ -130,7 +130,7 @@ camembert_item.save
 puts "9 - creating Eau Mont Rouc"
 eau_roucous = Product.new(
   bar_code: "3257971309114",
-  category: "en:beverages",
+  category: "Boissons",
   name: "Eau minérale naturelle",
   photo:
   "https://static.openfoodfacts.org/images/products/325/797/130/9114/front_fr.25.200.jpg",
@@ -146,7 +146,7 @@ puts "10 - creating Creme Vanille Danette"
 
 danette = Product.new(
   bar_code: "3033491279720",
-  category: "en:dairies",
+  category: "Produits laitiers",
   name: "Danette vanille",
   photo:
   "https://static.openfoodfacts.org/images/products/303/349/127/9720/front_fr.21.200.jpg",
@@ -159,6 +159,7 @@ danette_item.save
 
 pompot = Product.new(
   bar_code: "3021760400043",
+  category: "Desserts",
   name: "Pomme Banane 90 g",
   photo: "https://static.openfoodfacts.org/images/products/302/176/040/0043/front_fr.48.200.jpg",
   generic_name: "Compote multifruit pomme banane allégée en sucres (30 % de sucres en moins)",
@@ -172,7 +173,7 @@ pompot_item.save
 
 alter1 = Product.new(
   bar_code: "3045320076127",
-  category: "en:dairies",
+  category: "Desserts",
   name: "Compote de pommes Andros",
   photo:
   "https://static.openfoodfacts.org/images/products/304/532/007/6127/front_fr.64.200.jpg",
@@ -184,7 +185,7 @@ alter1.save
 
 alter2 = Product.new(
   bar_code: "3045320083453",
-  category: "en:dairies",
+  category: "Desserts",
   name: "compote pomme vanille",
   photo:
   "https://static.openfoodfacts.org/images/products/304/532/008/3453/front_fr.68.200.jpg",

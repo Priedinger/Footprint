@@ -6,7 +6,7 @@
     <div class="product-description">
       <h2 id="title"><%= @title%></h2>
       <p><em><%= @product.brand%></em></p>
-      <span class="badge badge-success">Catégorie</span>
+      <span class="badge badge-success"><%= @product.category%></span>
     </div>
     <div class="product-score">
       <div class="progress-circle" data-value="<%= @product.score%>">
