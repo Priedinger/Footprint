@@ -35,7 +35,9 @@
   height: 50px;
   width: 50px;
   border-radius: 5%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .img-ticket{
   max-height: 50px;
