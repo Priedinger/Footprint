@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
           bar_code: params[:bar_code],
           category: product["product"]["categories_tags"].first,
           name: product["product"]["product_name_fr"],
-          photo: product["product"]["selected_images"]["front"]["small"]["fr"],
+          photo: product["product"]["selected_images"]["front"]["small"].first[1],
           generic_name: product["product"]["generic_name"],
           brand: product["product"]["brands"],
           category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"]

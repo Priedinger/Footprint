@@ -1,10 +1,10 @@
 .gallery-container {
-  column-count: 2;
+  column-count: 3;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
 }
 .gallery-item {
-  display: inline-block;
+  display: block;
   margin: 0;
   width: 100%;
   overflow: hidden;
@@ -12,7 +12,6 @@
   position: relative;
   margin-bottom: 0.5rem;
 	border-bottom: none;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
   img {
     width: 100%;
     height: auto;
@@ -28,5 +27,8 @@
     top: 0.2rem;
     right: 0.2rem;
     color: white;
+    background-color: $gray;
+    padding: 0.2rem 0.3rem;
+    border-radius: 50%;
   }
 }
