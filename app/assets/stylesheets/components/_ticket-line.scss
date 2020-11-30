@@ -27,8 +27,12 @@
   text-overflow: ellipsis;
 }
 
-.ticket-icon {
-  text-align: right;
+.ticket-title{
+  display: flex;
+  justify-content: space-between;
+  h1{
+    margin: 0px;
+  }
 }
 
 .product-img-ticket {
@@ -43,7 +47,24 @@
   max-height: 50px;
   max-width: 50px;
 }
+.ticket-show-title{
+  margin: 10px 0px 5px;
+}
+
+.ticket-date{
+  margin: 0;
+}
 
 .ticket-line-unidentified {
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  border-bottom: 1px solid $light-gray;
+  padding: 5px 0px;
+
+  p {
+    color: $gray;
+    margin: 0;
+  }
 }
