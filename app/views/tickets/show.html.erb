@@ -8,6 +8,19 @@
     <% end %>
   </div>
 
+ <% unless @unidentified_items.empty?  %>
+
+    <p><strong>Ces produits n'ont pas été identifiés</strong></p>
+    <% @unidentified_items.each do |item| %>
+      <div class="ticket-line ticket-line-unidentified">
+        <%= item.description %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
+        <%= link_to edit_item_path(item, ticket_id: @ticket.id) do %>
+          <i class="fas fa-camera"></i>
+
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
   <% @ticket.items.each do |item| %>
     <% if  item.product_id?%>
       <%= link_to product_path(item.product_id) do %>
@@ -26,20 +39,6 @@
           <i class="fas fa-chevron-right"></i>
         </div>
       <% end %>
-    <% end %>
-  <% end %>
-
-  <% unless @unidentified_items.empty?  %>
-
-    <p><strong>Ces produits n'ont pas été identifiés</strong></p>
-    <% @unidentified_items.each do |item| %>
-      <div class="ticket-line ticket-line-unidentified">
-        <%= item.description %> <!-- Ici il faut recuperer les params d'un ticket et les passer dans le lien -->
-        <%= link_to edit_item_path(item, ticket_id: @ticket.id) do %>
-          <i class="fas fa-camera"></i>
-
-        <% end %>
-      </div>
     <% end %>
   <% end %>
 </div>
