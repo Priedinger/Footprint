@@ -6,9 +6,8 @@
       <% end %>
   </div>
   <p class="ticket-show-date"><small>Scanné le <%= @ticket.created_at.strftime("%d/%m/%Y à %k:%M") %></small></p>
-
-
- <% unless @unidentified_items.empty?  %>
+  Score : <%= @ticket_score %>
+<% unless @unidentified_items.empty?  %>
   <% if @unidentified_items.count == 1 %>
     <p class="ticket-show-title"><strong>Ce produit n'a pas été identifié</strong></p>
   <% else %>
