@@ -9,7 +9,7 @@
 
   <div class="gallery-container">
     <% if @favorites.count != 0 %>
-      <% @favorites.each do |favorite| %>
+      <% @favorites.reverse.each do |favorite| %>
         <div class="gallery-item">
           <%= link_to product_path(favorite.product) do %>
             <%= image_tag favorite.product.photo %>
