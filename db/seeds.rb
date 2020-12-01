@@ -44,8 +44,7 @@ def clean_category(off_category)
   end
 end
 
-
-categories = ["jambons-blancs", "laits-demi-ecremes", "riz-blanc", "aliments-et-boissons-a-base-de-vegetaux", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines"]
+categories = ["jambons-blancs", "laits-demi-ecremes", "riz-blanc", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines"]
 categories.each do |category|
 
   puts "Creating Products and related Items From Category >> #{category} "
@@ -96,6 +95,8 @@ top_5_items = array_of_items.sample(5)
 
 list_of_items = top_5_items.join(",")
 
+puts "done creating 10 ticket"
+
 new_ticket = Ticket.create(
   user_id: elsa.id,
   photo: list_of_items
@@ -104,9 +105,14 @@ new_ticket = Ticket.create(
 
 puts "done creating 10 ticket"
 
+puts "Adding products with a score > 70 to Favorites for Elsa"
 
-
-
+all_products = Product.all
+all_products.each do |product|
+  if product.score && product.score > 70
+    Favorite.create(user_id: elsa.id, product_id: product.id)
+  end
+end
 
 # >>> Autres catégries à tester
 # --------------------------------
@@ -115,6 +121,7 @@ puts "done creating 10 ticket"
 #"non-alimentaire" NON
 #"petits-pois-en-conserve" NON
 #"cordons-bleus" NON
+
 
 # OLD VERSION OF SEED > With fake scoring
 # ==============================================
