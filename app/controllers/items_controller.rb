@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @title = "Scan de '#{@item.description}'"
     # cette méthode récupère un code bar (params[:bar_code])
   end
 

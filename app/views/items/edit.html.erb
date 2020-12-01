@@ -1,10 +1,10 @@
 
- <h1> Scannez le code barre de "<%=@item.description%> " </h1>
-<%= form_for(@item, html:{id: "scan_form"}) do %>
+ <h1 class="title d-none"> <%= @title %></h1>
+<%= form_for(@item, html:{id: "scan_form", class:"hidden"}) do %>
   <%= label_tag(:bar_code, "Bar code:") %>
   <%= text_field_tag(:bar_code, "", id: "scanned_bar_code" ) %>
   <%= submit_tag("Search") %>
 <% end %>
 
 <% api_key = Rails.env.production? ? ENV['SCANDIT_PROD_APIKEY'] : ENV['SCANDIT_DEV_APIKEY'] %>
-  <div id="scandit-barcode-picker" data-apikey="<%= api_key %>" style="width: 100%; height: 100%;"></div>
+  <div id="scandit-barcode-picker" data-apikey="<%= api_key %>" style="width: 100%; height: calc(100vh - 8vh - 4vh);position: fixed;top: 2rem;"></div>
