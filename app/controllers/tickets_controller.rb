@@ -76,7 +76,7 @@ class TicketsController < ApplicationController
         text << annotation.description
       end
     end
-    File.delete(file)
+    File.delete(Rails.root.join('new_ticket.jpg').to_path)
     return text
   end
 
