@@ -10,13 +10,15 @@ const initScanner = () => {
       return ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
         playSoundOnScan: false,
         vibrateOnScan: true,
-        guiStyle: "viewfinder"
+        guiStyle: "viewfinder",
+        videoFit: "cover"
       });
     })
     .then((barcodePicker) => {
       const scanSettings = new ScanditSDK.ScanSettings({
         enabledSymbologies: ["ean13"],
         codeDuplicateFilter: 1000,
+        searchArea: { x: 0, y: 0.4, width: 1.0, height: 0.3 }
       });
       barcodePicker.applyScanSettings(scanSettings);
 
