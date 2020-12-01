@@ -5,7 +5,7 @@ const initWebCam = () => {
   const webcamElement = document.getElementById('webcam');
   const canvasElement = document.getElementById('canvas');
   const webcam = new Webcam(webcamElement, 'user', canvasElement);
-  const btn = document.getElementById('photo-take');
+  const btn = document.getElementById('pic-nav-btn');
   
   webcam.start({facingMode: 'enviroment'})
      .then(result =>{

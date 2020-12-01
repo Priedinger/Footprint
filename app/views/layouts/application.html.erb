@@ -29,6 +29,10 @@
     <div class="content-wrapper">
       <%= yield %>
     </div>
-    <%= render 'shared/navbar' %>
+    <% if params[:controller] == 'tickets' && params[:action] == 'new' %>
+      <%= render 'shared/navbar_new_ticket' %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+    <% end %>
   </body>
 </html>
