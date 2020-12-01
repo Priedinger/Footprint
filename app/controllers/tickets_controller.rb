@@ -76,7 +76,7 @@ class TicketsController < ApplicationController
         text << annotation.description
       end
     end
-    puts text
+    File.delete(file)
     return text
   end
 
