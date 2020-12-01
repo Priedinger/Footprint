@@ -4,9 +4,9 @@ import Webcam from 'webcam-easy';
 const initWebCam = () => {
   const webcamElement = document.getElementById('webcam');
   const canvasElement = document.getElementById('canvas');
-  const webcam = new Webcam(webcamElement, 'user', canvasElement);
+  const webcam = new Webcam(webcamElement, 'environment', canvasElement);
   const btn = document.getElementById('photo-take');
-  
+
   webcam.start({facingMode: 'enviroment'})
      .then(result =>{
         console.log("webcam started");
