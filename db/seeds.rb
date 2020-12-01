@@ -45,7 +45,7 @@ def clean_category(off_category)
 end
 
 categories = ["jambons-blancs", "laits-demi-ecremes", "mozzarella", "riz-blanc", "aliments-et-boissons-a-base-de-vegetaux", "eaux-minerales-naturelles", "cremes-dessert-vanille", "pains-de-mie", "non-alimentaire", "pates-a-tartiner", "petits-pois-en-conserve", "cordons-bleus", "compotes-de-pomme", "madeleines"]
-#categories = ["petits-pois-en-conserve"]
+
 categories.each do |category|
   puts "Creating Products and related Items From Category >> #{category} "
 
@@ -77,19 +77,6 @@ categories.each do |category|
     end
   end
 end
-
-
-# puts "creating ticket"
-
-# Item.all.each do |item|
-#   if item.product_id
-# ticket_1_elsa = Ticket.create(user_id: elsa.id, photo: )
-
-
-#     t.bigint "user_id", null: false
-#     t.datetime "created_at", precision: 6, null: false
-#     t.datetime "updated_at", precision: 6, null: false
-#     t.string "photo"
 
 puts "Done !! "
 
