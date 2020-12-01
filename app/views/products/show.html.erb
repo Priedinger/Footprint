@@ -34,7 +34,6 @@
     <% end %>
   </div>
   <h3 class="alt-title">Alternatives</h3>
-
 </div>
 
 <div class="product-alts">
@@ -49,11 +48,11 @@
             <h2><%= alternative.name %></h2>
             <% unless alternative.score.nil? %>
               <% if alternative.score < 33 %>
-                <span class="badge badge-pill badge-warning m-0" style="background-color: $red;"><%= alternative.score %></span>
+                <span class="badge badge-pill badge-danger m-0" ><%= alternative.score %></span>
               <% elsif alternative.score < 66 %>
-                <span class="badge badge-pill badge-warning m-0" style="background-color: $orange;"><%= alternative.score %></span>
+                <span class="badge badge-pill badge-warning m-0" ><%= alternative.score %></span>
               <% else %>
-                <span class="badge badge-pill badge-warning m-0" style="background-color: $green;"><%= alternative.score %></span>
+                <span class="badge badge-pill badge-success m-0" ><%= alternative.score %></span>
               <% end %>
             <% end %>
           </div>
