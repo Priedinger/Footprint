@@ -22,14 +22,15 @@
       <% end %>
     <% end %>
   <% end %>
-
-  <% if @ticket.items.count == 1 %>
-    <p class="ticket-show-title"><strong> <%= @ticket.items.count %> produits identifié </strong></p>
+<% unless @identified_items.empty? %>
+  <% if @identified_items.count == 1 %>
+    <p class="ticket-show-title"><strong> <%= @identified_items.count %> produit identifié </strong></p>
   <% else %>
-    <p class="ticket-show-title"><strong> <%= @ticket.items.count %> produits identifiés </strong></p>
+    <p class="ticket-show-title"><strong> <%= @identified_items.count %> produits identifiés </strong></p>
   <% end %>
+<% end %>
   <% @ticket.items.each do |item| %>
-    <% if  item.product_id?%>
+    <% if item.product_id?%>
       <%= link_to product_path(item.product_id) do %>
         <div class="ticket-line">
           <div class="product-img-ticket">
