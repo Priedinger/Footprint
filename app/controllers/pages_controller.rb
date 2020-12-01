@@ -7,6 +7,7 @@ class PagesController < ApplicationController
       @favorites = current_user.favorites
       @tickets = current_user.tickets
      end
+     @global_tickets_score
   end
 
   def settings
