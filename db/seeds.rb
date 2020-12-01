@@ -3,10 +3,10 @@ require 'nokogiri'
 require 'json'
 
 puts "Cleaning database..."
-# TicketLine.destroy_all
-# Item.destroy_all
+TicketLine.destroy_all
+Item.destroy_all
 Ticket.destroy_all
-# Product.destroy_all
+Product.destroy_all
 
 User.destroy_all
 
@@ -65,6 +65,8 @@ categories.each do |category|
     product_serialized = open(url).read
     product = JSON.parse(product_serialized)
 
+    puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
+
     if product["product"]["ecoscore_data"]
       new_product = Product.create(
         score: product["product"]["ecoscore_data"]["score"],
@@ -76,7 +78,11 @@ categories.each do |category|
         brand: product["product"]["brands"],
         category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"]
         )
-      Item.create(description: new_product[:name], product_id: new_product.id)
+        if new_product.score.nil?
+          new_product.destroy
+        else
+          Item.create(description: new_product[:name], product_id: new_product.id)
+        end
     end
   end
 end
@@ -84,23 +90,29 @@ puts "Done !! "
 
 puts "creating 10 new tickets for ELSA of 5 items"
 
-array_of_items = []
 
-10.times{
-Item.all.each do |item|
-  array_of_items << item.description
-end
+10.times {
+  top_5_items = Item.all.sample(5)
 
-top_5_items = array_of_items.sample(5)
+  list_of_items = []
 
-list_of_items = top_5_items.join(",")
+  top_5_items.each do |item|
+    list_of_items << item.description
+  end
 
-puts "done creating 10 ticket"
+  list_of_items.join(",")
 
-new_ticket = Ticket.create(
-  user_id: elsa.id,
-  photo: list_of_items
-  )
+  new_ticket = Ticket.create(
+    user_id: elsa.id,
+    photo: list_of_items
+    )
+
+  top_5_items.each do |item|
+    TicketLine.create(
+      ticket_id: new_ticket.id,
+      item_id: item.id,
+      quantity: 1)
+  end
 }
 
 puts "done creating 10 ticket"
