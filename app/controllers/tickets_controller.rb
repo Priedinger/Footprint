@@ -10,6 +10,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @title = "Ticket n°#{@ticket.id}"
     @unidentified_items = @ticket.items.where(product_id: nil)
+    @identified_items = @ticket.items.where.not(product_id: nil)
     unless @ticket.items.where.not(product_id: nil).count == 0
       @ticket_score = calculate_ticket_score(@ticket)
     end
@@ -98,4 +99,5 @@ class TicketsController < ApplicationController
     end
     ticket_score = total_score / ticket.items.where.not(product_id: nil).count
   end
+
 end
