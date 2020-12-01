@@ -6,31 +6,31 @@
   <div class="figures-grid">
 
     <div class="figures-card">
+      <%= link_to tickets_path do  %>
       <div>
         <h4>tickets</h4>
         <h3><%= @tickets.count %></h3>
-        <%= link_to tickets_path do  %>
           <div class="circle-btn">
             <i class="fas fa-chevron-right"></i>
           </div>
-        <% end %>
       </div>
+      <% end %>
     </div>
 
     <div class="figures-card">
-      <div>
+      <%= link_to favorites_path do %>
+        <div>
         <h4>favoris</h4>
         <% if @favorites.count.nil? %>
           <h3> 0 </h3>
         <% else %>
           <h3><%= @favorites.count %></h3>
         <% end %>
-        <%= link_to favorites_path do %>
           <div class="circle-btn">
             <i class="fas fa-chevron-right"></i>
           </div>
-        <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 
