@@ -6,8 +6,8 @@ class PagesController < ApplicationController
     if current_user
       @favorites = current_user.favorites
       @tickets = current_user.tickets
-     end
-     global_score
+      global_score
+    end
   end
 
   def settings
