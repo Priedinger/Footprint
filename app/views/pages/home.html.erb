@@ -8,11 +8,8 @@
     <div class="figures-card">
       <%= link_to tickets_path do  %>
       <div>
-        <h4>tickets</h4>
+        <h4>Tickets</h4>
         <h3><%= @tickets.count %></h3>
-          <div class="circle-btn">
-            <i class="fas fa-chevron-right"></i>
-          </div>
       </div>
       <% end %>
     </div>
@@ -20,28 +17,27 @@
     <div class="figures-card">
       <%= link_to favorites_path do %>
         <div>
-        <h4>favoris</h4>
+        <h4>Favoris</h4>
         <% if @favorites.count.nil? %>
           <h3> 0 </h3>
         <% else %>
           <h3><%= @favorites.count %></h3>
         <% end %>
-          <div class="circle-btn">
-            <i class="fas fa-chevron-right"></i>
-          </div>
       </div>
       <% end %>
     </div>
   </div>
 
-  <h4 class="mb-5">Votre score moyen</h4>
-  <div class="d-flex justify-content-center mt-5">
-      <div class="progress-circle mt-5 mb-3" data-value="<%= @global_tickets_score %>" style="transform: scale(3.5);">
-        <div class="progress-masque" >
-          <div class="progress-barre"></div>
-          <div class="progress-sup50"></div>
+  <div class="global-score">
+    <h4 class="mb-5 text-center">Votre score moyen</h4>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="progress-circle mt-5 mb-3" data-value="<%= @global_tickets_score %>" style="transform: scale(3.5);">
+          <div class="progress-masque" >
+            <div class="progress-barre"></div>
+            <div class="progress-sup50"></div>
+          </div>
         </div>
-      </div>
+    </div>
   </div>
 <% end %>
 
