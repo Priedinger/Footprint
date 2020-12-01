@@ -3,10 +3,10 @@ require 'nokogiri'
 require 'json'
 
 puts "Cleaning database..."
-TicketLine.destroy_all
-Item.destroy_all
+# TicketLine.destroy_all
+# Item.destroy_all
 Ticket.destroy_all
-Product.destroy_all
+# Product.destroy_all
 
 User.destroy_all
 
@@ -45,8 +45,8 @@ def clean_category(off_category)
 end
 
 categories = ["jambons-blancs", "laits-demi-ecremes", "riz-blanc", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines"]
-
 categories.each do |category|
+
   puts "Creating Products and related Items From Category >> #{category} "
 
   url = "https://fr.openfoodfacts.org/categorie/#{category}"
@@ -56,12 +56,15 @@ categories.each do |category|
   html_doc.search('.products li a').each do |element|
     product_name = element.text.strip
     ref = element.attribute('href').value
+
     pattern = /(?<bar_code>\d+)/
     match_data = ref.match(pattern)
     bar_code = match_data[:bar_code]
+
     url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
     product_serialized = open(url).read
     product = JSON.parse(product_serialized)
+
     if product["product"]["ecoscore_data"]
       new_product = Product.create(
         score: product["product"]["ecoscore_data"]["score"],
@@ -77,7 +80,6 @@ categories.each do |category|
     end
   end
 end
-
 puts "Done !! "
 
 puts "creating 10 new tickets for ELSA of 5 items"
@@ -91,9 +93,9 @@ end
 
 top_5_items = array_of_items.sample(5)
 
-
 list_of_items = top_5_items.join(",")
 
+puts "done creating 10 ticket"
 
 new_ticket = Ticket.create(
   user_id: elsa.id,
@@ -101,9 +103,7 @@ new_ticket = Ticket.create(
   )
 }
 
-
 puts "done creating 10 ticket"
-
 
 puts "Adding products with a score > 70 to Favorites for Elsa"
 
@@ -113,6 +113,14 @@ all_products.each do |product|
     Favorite.create(user_id: elsa.id, product_id: product.id)
   end
 end
+
+# >>> Autres catégries à tester
+# --------------------------------
+# "mozzarella" NON
+#"eaux-minerales-naturelles" NON
+#"non-alimentaire" NON
+#"petits-pois-en-conserve" NON
+#"cordons-bleus" NON
 
 
 # OLD VERSION OF SEED > With fake scoring
