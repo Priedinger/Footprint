@@ -28,8 +28,11 @@ class TicketsController < ApplicationController
     @ticket.user = current_user
     @ticket.photo = read_ticket(tickets_params[:photo])
     if @ticket.save
-      items = @ticket.photo
-      items.split(" ").each do |item|
+      # items = @ticket.photo
+      items = []
+      items << @ticket.photo
+      # items.split(" ").each do |item|
+      items.each do |item|
         # vérifier si l'item existe déjà
         if Item.where(description: item).where.not(product_id: nil).first
           # si cette description(item) est déjà associé à un produit dans la DB, on récupère l'item et on fait une ticket line avec
