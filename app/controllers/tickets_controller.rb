@@ -64,7 +64,7 @@ class TicketsController < ApplicationController
     "type": "service_account",
     "project_id": "footprint-296817",
     "private_key_id": ENV["GOOGLE_APPLICATION_PRIVATE_KEY_ID"],
-    "private_key": ENV["GOOGLE_APPLICATION_PRIVATE_KEY"].gsub("\\n","\n")[1..-3],
+    "private_key": ENV["GOOGLE_APPLICATION_PRIVATE_KEY"],
     "client_email": "footprint@footprint-296817.iam.gserviceaccount.com",
     "client_id": ENV["GOOGLE_APPLICATION_CLIENT_ID"],
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
