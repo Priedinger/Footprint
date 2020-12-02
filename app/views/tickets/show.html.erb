@@ -1,12 +1,23 @@
 <div class="container">
   <div class="ticket-title">
-    <h1 id="title"><%= @title %></h1>
+    <h1 id="title"> <%= @title %> </h1>
       <%= link_to ticket_path(@ticket), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer ce ticket ?" } do %>
       <i class="far fa-trash-alt"></i>
       <% end %>
   </div>
-  <p class="ticket-show-date"><small>Scanné le <%= @ticket.created_at.strftime("%d/%m/%Y à %k:%M") %></small></p>
-  Score : <%= @ticket_score %>
+  <div class="date-score">
+  <p class="ticket-show-date"><small>U Express <%= @ticket.created_at.strftime("à %k:%M") %></small></p>
+  <div class="product-score">
+    <div class="progress-circle" data-value="<%= @ticket_score %>">
+      <div class="progress-masque">
+        <div class="progress-barre"></div>
+          <div class="progress-sup50"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
 <% unless @unidentified_items.empty?  %>
   <% if @unidentified_items.count == 1 %>
     <p class="ticket-show-title"><strong>Ce produit n'a pas été identifié</strong></p>
