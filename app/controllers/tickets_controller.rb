@@ -8,7 +8,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
-    @title = "Ticket n°#{@ticket.id}"
+    @title = "Ticket du #{@ticket.created_at.strftime('%d.%m.%Y')}"
     @unidentified_items = @ticket.items.where(product_id: nil)
     @identified_items = @ticket.items.where.not(product_id: nil)
     unless @ticket.items.where.not(product_id: nil).count == 0
