@@ -51,7 +51,15 @@
               <%= image_tag Product.find(item.product_id).photo, class: "brand-img" %>
             </div>
             <div class="ticket-shop">
-              <p><strong><%= Product.find(item.product_id).name%></strong></p>
+
+
+<!--               A CHANGER >> NAME PETIT POIS -->
+
+              <% if Product.find(item.product_id).name.match?(/&quot;/)%>
+                <p><strong><%= Product.find(item.product_id).name.gsub! '&quot;', '"'%></strong></p>
+              <% else %>
+                <p><strong><%= Product.find(item.product_id).name%></strong></p>
+              <% end %>
               <p><small><%= Product.find(item.product_id).brand %></small></p>
               <% unless item.product.score.nil? %>
                 <% if item.product.score < 33 %>
