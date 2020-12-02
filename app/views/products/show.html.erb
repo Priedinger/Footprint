@@ -1,6 +1,6 @@
 <div class="container" style="padding-bottom: 0">
   <div class="product-img">
-    <%= image_tag @product.photo %>
+    <%= image_tag @product.photo, :class => "rounded" %>
   </div>
   <div class="product-infos">
     <div class="product-description">
@@ -46,14 +46,14 @@
     <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
       <%= link_to  favorites_path(product: @product.id), remote: true, method: :post do %>
         <%# <i class="far fa-star" id="favorite"></i> %>
-        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Ajouter à mes favoris</button>
+        <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus" style="margin-right: 0.5rem"></i>Ajouter à mes favoris</button>
       <% end %>
     <% end %>
 
     <% if Favorite.find_by(user_id: current_user, product_id: @product.id)%>
       <%= link_to favorite_path(Favorite.find_by(user_id: current_user, product_id: @product.id).id), remote: true, method: :delete do %>
         <%# <i class="fas fa-star" id="notfavorite"></i> %>
-        <button type="button" class="btn btn-outline-danger"><i class="fas fa-minus" style="margin-right: 0.5rem;"></i>Retirer de mes favoris</button>
+        <button type="button" class="btn btn-outline-info"><i class="fas fa-minus" style="margin-right: 0.5rem"></i>Retirer de mes favoris</button>
       <% end %>
     <% end %>
   </div>
