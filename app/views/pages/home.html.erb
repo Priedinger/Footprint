@@ -29,6 +29,7 @@
     <% end %>
   </div>
 
+<% unless @global_tickets_score.nil? %>
   <div class="global-score">
     <h4 class="mb-5 text-center">Votre score moyen</h4>
     <div class="d-flex justify-content-center mt-5">
@@ -37,6 +38,7 @@
             <div class="progress-barre"></div>
             <div class="progress-sup50"></div>
           </div>
+<% end %>
 
         </div>
     </div>
