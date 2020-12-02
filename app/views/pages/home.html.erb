@@ -46,8 +46,9 @@
   </div>
 <% end %>
 
+<% if current_user.tickets.empty? %>
   <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
     <p><i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Nouveau ticket</p>
   <% end %>
-
+<% end %>
 </div>
