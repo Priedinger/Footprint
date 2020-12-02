@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @title = "Ticket du #{l(@ticket.created_at, format: "%d %B %Y", locale: :fr)}"
     @unidentified_items = @ticket.items.where(product_id: nil)
-    @identified_items = @ticket.items.where.not(product_id: nil)
+    @identified_items = @ticket.items.where.not(product_id: nil).order(updated_at: :desc)
     unless @ticket.items.where.not(product_id: nil).count == 0
       @ticket_score = calculate_ticket_score(@ticket)
     end
