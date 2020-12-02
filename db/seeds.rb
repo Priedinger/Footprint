@@ -44,7 +44,7 @@ def clean_category(off_category)
   end
 end
 
-categories = ["jambons-blancs", "laits-demi-ecremes", "riz-blanc", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines"]
+categories = ["viandes-d-agneau", "jambons-blancs", "laits-demi-ecremes", "riz-blanc", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines"]
 categories.each do |category|
 
   puts "Creating Products and related Items From Category >> #{category} "
@@ -65,9 +65,8 @@ categories.each do |category|
     product_serialized = open(url).read
     product = JSON.parse(product_serialized)
 
-    puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
-
-    if product["product"]["ecoscore_data"]
+    if product["product"]["ecoscore_data"] && product["product"]["ecoscore_grade"] && product["product"]["nutriscore_grade"]
+      puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
       new_product = Product.create(
         score: product["product"]["ecoscore_data"]["score"],
         bar_code: bar_code,
