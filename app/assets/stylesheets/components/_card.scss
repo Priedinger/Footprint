@@ -2,6 +2,7 @@
   border-radius: 8px;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.07);
   padding: 1rem;
+  background-color: $white;
 
   .brand-img {
     width: auto;
@@ -60,17 +61,20 @@
   justify-content: center;
 }
 .figures-card {
-  background-color: $light-gray;
+  background-color: $white;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  color: $white;
+  color: $gray;
+  height: 145px;
+  weight: 145px;
+
   h4 {
     font-size: 1.2rem;
-    color: $white;
+    color: $gray;
     font-weight: 400;
     margin: 0;
   }
@@ -82,7 +86,7 @@
   }
 
   a {
-    color: $white,
+    color: $gray,
   }
 
   p {
@@ -105,5 +109,16 @@
     margin: 0;
     color: $white;
   }
+}
+
+.global-score {
+  background-color: $white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  align-items: center;
+  position: relative;
+  color: $gray;
+  height: 300px;
+  weight: 300px;
 }
 

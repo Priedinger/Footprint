@@ -63,7 +63,6 @@ class TicketsController < ApplicationController
   end
 
   def read_ticket(photo)
-
     file = File.open('new_ticket.jpg',"wb") do |f|
       f.write(Base64.decode64(photo.split('data:image/png;base64,').last))
     end
