@@ -1,8 +1,9 @@
 <div class="container" style="padding-bottom: 0">
 
-  <h1 id="title"><%= @title %></h1>
-
 <% if current_user %>
+  <h1 id="title"> Bonjour <%= current_user.first_name.capitalize %></h1>
+
+
   <div class="figures-grid">
 
     <%= link_to tickets_path do  %>
