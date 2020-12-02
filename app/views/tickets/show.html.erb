@@ -53,11 +53,11 @@
             <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
               <% unless item.product.score.nil? %>
                 <% if item.product.score < 33 %>
-                  <p style="margin: 0"><span class="badge badge-pill badge-danger" > Mauvais </span></p>
+                  <p style="margin: 0"><span class="badge badge-pill" id="badge-red"> Mauvais </span></p>
                  <% elsif item.product.score < 66 %>
-                   <p style="margin: 0"><span class="badge badge-pill badge-warning" > Moyen </span></p>
+                   <p style="margin: 0"><span class="badge badge-pill" id="badge-orange"> Moyen </span></p>
                 <% else %>
-                  <p style="margin: 0"><span class="badge badge-pill badge-success" > Bon </span></p>
+                  <p style="margin: 0"><span class="badge badge-pill" id="badge-green"> Bon </span></p>
                 <% end %>
               <% end %>
             <% else %>

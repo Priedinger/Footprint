@@ -61,7 +61,7 @@
 </div>
 
 
-  
+
   <% if @product.category_agribalyse.nil? %>
     <div class="container">
       <p>Désolé, nous ne pouvons pas proposer d'alternatives pour ce produit.</p>
@@ -79,11 +79,11 @@
                 <h2><%= alternative.name %></h2>
                 <% unless alternative.score.nil? %>
                   <% if alternative.score < 33 %>
-                    <span class="badge badge-pill badge-danger m-0" ><%= alternative.score %></span>
+                    <span class="badge badge-pill m-0" id="badge-red"><%= alternative.score %></span>
                   <% elsif alternative.score < 66 %>
-                    <span class="badge badge-pill badge-warning m-0" ><%= alternative.score %></span>
+                    <span class="badge badge-pill m-0" id="badge-orange"><%= alternative.score %></span>
                   <% else %>
-                    <span class="badge badge-pill badge-success m-0" ><%= alternative.score %></span>
+                    <span class="badge badge-pill m-0" id="badge-green"><%= alternative.score %></span>
                   <% end %>
                 <% end %>
               </div>
@@ -93,5 +93,5 @@
       <% end %>
     </div>
   <% end %>
-  
+
 
