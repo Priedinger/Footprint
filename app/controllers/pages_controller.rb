@@ -40,5 +40,4 @@ class PagesController < ApplicationController
       ticket_score = total_score / ticket.items.where.not(product_id: nil).count
     end
   end
-
 end
