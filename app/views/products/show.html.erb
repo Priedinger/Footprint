@@ -36,28 +36,38 @@
   <h3 class="alt-title">Alternatives</h3>
 </div>
 
-<div class="product-alts">
-  <% @alternatives.each do |alternative| %>
-    <% if  alternative.photo? %>
-      <%= link_to product_path(alternative) do  %>
-        <div class="product-alt">
-          <div class="d-flex justify-content-center">
-              <%= image_tag alternative.photo %>
-          </div>
-          <div class="alt-infos align-items-center">
-            <h2><%= alternative.name %></h2>
-            <% unless alternative.score.nil? %>
-              <% if alternative.score < 33 %>
-                <span class="badge badge-pill badge-danger m-0" ><%= alternative.score %></span>
-              <% elsif alternative.score < 66 %>
-                <span class="badge badge-pill badge-warning m-0" ><%= alternative.score %></span>
-              <% else %>
-                <span class="badge badge-pill badge-success m-0" ><%= alternative.score %></span>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+
+  
+  <% if @product.category_agribalyse.nil? %>
+    <div class="container">
+      <p>Désolé, nous ne pouvons pas proposer d'alternatives pour ce produit.</p>
+    </div>
+  <% else %>
+    <div class="product-alts">
+      <% @alternatives.each do |alternative| %>
+        <% if  alternative.photo? %>
+          <%= link_to product_path(alternative) do  %>
+            <div class="product-alt">
+              <div class="d-flex justify-content-center">
+                  <%= image_tag alternative.photo %>
+              </div>
+              <div class="alt-infos align-items-center">
+                <h2><%= alternative.name %></h2>
+                <% unless alternative.score.nil? %>
+                  <% if alternative.score < 33 %>
+                    <span class="badge badge-pill badge-danger m-0" ><%= alternative.score %></span>
+                  <% elsif alternative.score < 66 %>
+                    <span class="badge badge-pill badge-warning m-0" ><%= alternative.score %></span>
+                  <% else %>
+                    <span class="badge badge-pill badge-success m-0" ><%= alternative.score %></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
-</div>
+  
+
