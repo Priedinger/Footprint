@@ -15,7 +15,6 @@
       </div>
     <% end %>
 
-
     <%= link_to favorites_path do %>
       <div class="figures-card">
         <div>
@@ -29,25 +28,23 @@
       </div>
     <% end %>
   </div>
-
-<% unless @global_tickets_score.nil? %>
-  <div class="global-score">
-    <h4 class="mb-5 text-center">Votre score moyen</h4>
-    <div class="d-flex justify-content-center mt-5">
+  <% unless current_user.tickets.empty? %>
+    <div class="global-score">
+      <h4 class="mb-5 text-center">Votre score moyen</h4>
+      <div class="d-flex justify-content-center mt-5">
         <div class="progress-circle mt-5 mb-3" data-value="<%= @global_tickets_score %>" style="transform: scale(3.5);">
           <div class="progress-masque" >
             <div class="progress-barre"></div>
             <div class="progress-sup50"></div>
           </div>
-<% end %>
-
         </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
-<% if current_user.tickets.empty? %>
-  <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
+  <% if current_user.tickets.empty? %>
+    <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
     <p><i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Nouveau ticket</p>
   <% end %>
 <% end %>
