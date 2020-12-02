@@ -44,7 +44,9 @@ def clean_category(off_category)
   end
 end
 
-categories = ["viandes-d-agneau", "jambons-blancs", "laits-demi-ecremes", "riz-blanc", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines"]
+
+
+categories = ["legumineuses-en-conserve", "boissons-sans-alcool", "preparations-au-poulet", "viandes-d-agneau", "cafes", "jambons-blancs", "laits-demi-ecremes", "riz-blanc", "cremes-dessert-vanille", "pains-de-mie", "pates-a-tartiner", "compotes-de-pomme", "madeleines", "produits-laitiers-fermentes"]
 categories.each do |category|
 
   puts "Creating Products and related Items From Category >> #{category} "
@@ -65,7 +67,8 @@ categories.each do |category|
     product_serialized = open(url).read
     product = JSON.parse(product_serialized)
 
-    if product["product"]["ecoscore_data"] && product["product"]["ecoscore_grade"] && product["product"]["nutriscore_grade"]
+    if product["product"]["ecoscore_data"]
+      #&& product["product"]["ecoscore_grade"] && product["product"]["nutriscore_grade"]
       puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
       new_product = Product.create(
         score: product["product"]["ecoscore_data"]["score"],
@@ -75,7 +78,9 @@ categories.each do |category|
         photo: product["product"]["selected_images"]["front"]["small"].first[1],
         generic_name: product["product"]["generic_name"],
         brand: product["product"]["brands"],
-        category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"]
+        category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"],
+        ecoscore_grade: product["product"]["ecoscore_grade"],
+        nutriscore_grade: product["product"]["nutriscore_grade"]
         )
         if new_product.score.nil?
           new_product.destroy
