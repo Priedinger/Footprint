@@ -20,8 +20,17 @@
       flex-grow: 1;
       color: $gray;
     }
+    .ticket-img {
+      min-width: 60px;
+      display: flex;
+      justify-content: center;
+    }
     p {
       margin: 0;
+      overflow: hidden;
+      white-space: nowrap; /* Don't forget this one */
+      text-overflow: ellipsis;
+      width: 50vw;
     }
     i {
       color: $green;

@@ -6,15 +6,18 @@
       <% end %>
   </div>
   <div class="date-score">
-  <p class="ticket-show-date"><small>U Express <%= @ticket.created_at.strftime("à %k:%M") %></small></p>
-  <div class="product-score">
-    <div class="progress-circle" data-value="<%= @ticket_score %>">
-      <div class="progress-masque">
-        <div class="progress-barre"></div>
-          <div class="progress-sup50"></div>
-      </div>
-    </div>
-  </div>
+    <p class="ticket-show-date"><small>U Express <%= @ticket.created_at.strftime("à %k:%M") %></small></p>
+    
+    <% if @identified_items.count != 0 %>
+      <div class="product-score">
+        <div class="progress-circle" data-value="<%= @ticket_score %>">
+          <div class="progress-masque">
+            <div class="progress-barre"></div>
+              <div class="progress-sup50"></div>
+          </div>
+        </div>
+      </div> 
+    <% end %>
   </div>
 
 
@@ -43,14 +46,15 @@
   <% @ticket.items.each do |item| %>
     <% if item.product_id?%>
       <%= link_to product_path(item.product_id) do %>
-        <div class="ticket-line">
-          <div class="product-img-ticket">
-            <%= image_tag Product.find(item.product_id).photo, class: "img-ticket" %>
-          </div>
-          <div class="ticket-line-info">
-            <% if item.product_id %>
-            <p class="product-name"><%= Product.find(item.product_id).name%></p>
-            <p class="product-brand"><%= Product.find(item.product_id).brand %></p>
+        
+        <div class="ticket-card">
+          <div class="ticket-infos">
+            <div class="ticket-img">
+              <%= image_tag Product.find(item.product_id).photo, class: "brand-img" %>
+            </div>
+            <div class="ticket-shop">
+              <p><strong><%= Product.find(item.product_id).name%></strong></p>
+              <p><small><%= Product.find(item.product_id).brand %></small></p>
               <% unless item.product.score.nil? %>
                 <% if item.product.score < 33 %>
                   <p style="margin: 0"><span class="badge badge-pill" id="badge-red"> Mauvais </span></p>
@@ -60,11 +64,14 @@
                   <p style="margin: 0"><span class="badge badge-pill" id="badge-green"> Bon </span></p>
                 <% end %>
               <% end %>
-            <% else %>
-            <% end %>
+            </div>
+            <svg width="26" height="13" viewBox="0 0 26 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 6.5L24.5714 6.5" stroke="#0AAF90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.0714 1L24.5714 6.5L19.0714 12" stroke="#0AAF90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <i class="fas fa-chevron-right"></i>
         </div>
+        
       <% end %>
     <% end %>
   <% end %>
