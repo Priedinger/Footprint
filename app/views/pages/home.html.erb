@@ -1,21 +1,22 @@
 <div class="container" style="padding-bottom: 0">
 
-  <h1 id="title"><%= @title %></h1>
-
 <% if current_user %>
+  <h1 id="title"> Bonjour <%= current_user.first_name.capitalize %></h1>
+
+
   <div class="figures-grid">
 
-    <div class="figures-card">
-      <%= link_to tickets_path do  %>
-      <div>
-        <h4>Tickets</h4>
-        <h3><%= @tickets.count %></h3>
+    <%= link_to tickets_path do  %>
+      <div class="figures-card">
+        <div>
+          <h4>Tickets</h4>
+          <h3><%= @tickets.count %></h3>
+        </div>
       </div>
-      <% end %>
-    </div>
+    <% end %>
 
-    <div class="figures-card">
-      <%= link_to favorites_path do %>
+    <%= link_to favorites_path do %>
+      <div class="figures-card">
         <div>
         <h4>Favoris</h4>
         <% if @favorites.count.nil? %>
@@ -24,13 +25,13 @@
           <h3><%= @favorites.count %></h3>
         <% end %>
       </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="global-score">
-    <h4 class="mb-5 text-center">Votre score moyen</h4>
-    <div class="d-flex justify-content-center mt-5">
+  <% unless current_user.tickets.empty? %>
+    <div class="global-score">
+      <h4 class="mb-5 text-center">Votre score moyen</h4>
+      <div class="d-flex justify-content-center mt-5">
         <div class="progress-circle mt-5 mb-3" data-value="<%= @global_tickets_score %>" style="transform: scale(3.5);">
           <div class="progress-masque" >
             <div class="progress-barre"></div>
@@ -41,8 +42,9 @@
   </div>
 <% end %>
 
-  <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
+  <% if current_user.tickets.empty? %>
+    <%= link_to new_ticket_path, class: "btn btn-success", id: "scan-btn-hp" do %>
     <p><i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Nouveau ticket</p>
   <% end %>
-
+<% end %>
 </div>
