@@ -28,12 +28,12 @@ class TicketsController < ApplicationController
     @ticket.user = current_user
     text = read_ticket(tickets_params[:photo])
     text = text.select {|item| item.length > 25}
-    @ticket.photo = text.join(",")
+    @ticket.photo = text.join(",FOOTPRINT,")
     if @ticket.save
       items = @ticket.photo
       # items = []
       # items << @ticket.photo
-      items.split(",").each do |item|
+      items.split(",FOOTPRINT,").each do |item|
       # items.each do |item|
         # vérifier si l'item existe déjà
         if Item.where(description: item).where.not(product_id: nil).first
