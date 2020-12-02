@@ -1,13 +1,16 @@
 .product-img {
   display: flex;
   justify-content: center;
-  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .product-infos {
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
+  background-color: $white;
+  padding: 5px;
+  border-radius: 10px;
   .product-description {
     h2 {
       font-size: 1.2rem;
@@ -41,6 +44,7 @@
   overflow-x: scroll;
   margin: 0 0 12vh 0;
   width: 100%;
+
   a {
     display: block;
   }
@@ -50,7 +54,8 @@
   overflow: hidden;
   padding: 0.5rem;
   max-width: 7rem;
-  border: 1px solid $light-gray;
+  background-color: $white;
+  border-radius: 10px;
   margin-right: 0.5rem;
   min-height: 6rem;
 

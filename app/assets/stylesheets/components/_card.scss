@@ -1,28 +1,36 @@
 .ticket-card {
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.07);
   padding: 1rem;
   background-color: $white;
+  margin-bottom: 10px;
 
   .brand-img {
-    width: auto;
-    height: 100%;
+    max-width: 60px;
+    max-height: 60px;
   }
 
   .ticket-infos {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid $green;
     height: 4rem;
     .ticket-shop {
       padding-left: 0.5rem;
       flex-grow: 1;
       color: $gray;
     }
+    .ticket-img {
+      min-width: 60px;
+      display: flex;
+      justify-content: center;
+    }
     p {
       margin: 0;
+      overflow: hidden;
+      white-space: nowrap; /* Don't forget this one */
+      text-overflow: ellipsis;
+      width: 50vw;
     }
     i {
       color: $green;
@@ -130,5 +138,9 @@
 
 .ticket-show-date {
   padding: 0;
+}
+
+#historic-arrow {
+  font-size: 25px;
 }
 
