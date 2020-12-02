@@ -26,13 +26,15 @@ class TicketsController < ApplicationController
     # string séparées par des virgules ex: "papier toilette, hule d'olive, déodorant"
     @ticket = Ticket.new(tickets_params)
     @ticket.user = current_user
-    @ticket.photo = read_ticket(tickets_params[:photo])
+    text = read_ticket(tickets_params[:photo])
+    text = text.select {|item| item.length > 25}
+    @ticket.photo = text.join(",")
     if @ticket.save
-      # items = @ticket.photo
-      items = []
-      items << @ticket.photo
-      # items.split(" ").each do |item|
-      items.each do |item|
+      items = @ticket.photo
+      # items = []
+      # items << @ticket.photo
+      items.split(",").each do |item|
+      # items.each do |item|
         # vérifier si l'item existe déjà
         if Item.where(description: item).where.not(product_id: nil).first
           # si cette description(item) est déjà associé à un produit dans la DB, on récupère l'item et on fait une ticket line avec
@@ -66,18 +68,15 @@ class TicketsController < ApplicationController
     file = File.open('new_ticket.jpg',"wb") do |f|
       f.write(Base64.decode64(photo.split('data:image/png;base64,').last))
     end
-
-    # file_name ='https://media-cdn.tripadvisor.com/media/photo-s/14/60/a2/79/ticket-de-caisse.jpg'
-    # res = Cloudinary::Uploader.upload(file_name)
-    # uploaded_url = res["url"]
     image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: Rails.application.credentials.google_vision_apikey)
     response = image_annotator.document_text_detection image: Rails.root.join('new_ticket.jpg').to_path
-    text = ""
-    response.responses.each do |res|
-      res.text_annotations.each do |annotation|
-        text << annotation.description
-      end
-    end
+    text = response.responses.first.text_annotations.first.description.split("\n")
+    # response.responses.each do |res|
+    #   text = res.text_annotations.first.description.split("\n")
+      # res.text_annotations.each do |annotation|
+      #   text << "#{annotation.description},"
+      # end
+    # end
     File.delete(Rails.root.join('new_ticket.jpg').to_path)
     return text
   end
@@ -89,5 +88,4 @@ class TicketsController < ApplicationController
     end
     ticket_score = total_score / ticket.items.where.not(product_id: nil).count
   end
-
 end
