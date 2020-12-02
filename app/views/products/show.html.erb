@@ -4,9 +4,31 @@
   </div>
   <div class="product-infos">
     <div class="product-description">
-      <h2 id="title"><%= @title%></h2>
-      <p><em><%= @product.brand%></em></p>
-      <span class="badge badge-success"><%= @product.category%></span>
+      <span class="badge badge-success mb-3"><%= @product.category%></span>
+      <h2 id="title" style="margin-bottom: 0px"><%= @title%></h2>
+      <p style="margin-bottom: 8px"><em><%= @product.brand%></em></p>
+      <div>
+        <% unless @product.ecoscore_grade.nil? %>
+         <i class="fas fa-shopping-bag"></i>
+          <% if  @product.ecoscore_grade == "a" %>
+            <span class="badge badge-pill badge-success m-0" >A</span>
+          <% elsif @product.ecoscore_grade == "b" %>
+            <span class="badge badge-pill badge-warning m-0" >B</span>
+          <% else %>
+            <span class="badge badge-pill badge-danger m-0" >C</span>
+          <% end %>
+        <% end %>
+        <% unless @product.nutriscore_grade.nil? %>
+          <i class="fas fa-carrot"></i>
+          <% if  @product.nutriscore_grade == "a" %>
+            <span class="badge badge-pill badge-success m-0" >A</span>
+          <% elsif @product.nutriscore_grade == "b" %>
+            <span class="badge badge-pill badge-warning m-0" >B</span>
+          <% else %>
+            <span class="badge badge-pill badge-danger m-0" >C</span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="product-score">
       <div class="progress-circle" data-value="<%= @product.score%>">
@@ -17,6 +39,8 @@
       </div>
     </div>
   </div>
+
+
 
   <div class="product-favorite">
     <% if Favorite.find_by(user_id: current_user, product_id: @product.id).nil?%>
