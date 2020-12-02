@@ -28,8 +28,11 @@ class TicketsController < ApplicationController
     @ticket.user = current_user
     @ticket.photo = read_ticket(tickets_params[:photo])
     if @ticket.save
-      items = @ticket.photo
-      items.split(" ").each do |item|
+      # items = @ticket.photo
+      items = []
+      items << @ticket.photo
+      # items.split(" ").each do |item|
+      items.each do |item|
         # vérifier si l'item existe déjà
         if Item.where(description: item).where.not(product_id: nil).first
           # si cette description(item) est déjà associé à un produit dans la DB, on récupère l'item et on fait une ticket line avec
@@ -60,19 +63,6 @@ class TicketsController < ApplicationController
   end
 
   def read_ticket(photo)
-    api_key = {
-    "type": "service_account",
-    "project_id": "footprint-296817",
-    "private_key_id": ENV["GOOGLE_APPLICATION_PRIVATE_KEY_ID"],
-    "private_key": ENV["GOOGLE_APPLICATION_PRIVATE_KEY"],
-    "client_email": "footprint@footprint-296817.iam.gserviceaccount.com",
-    "client_id": ENV["GOOGLE_APPLICATION_CLIENT_ID"],
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/footprint%40footprint-296817.iam.gserviceaccount.com"
-  }
-
     file = File.open('new_ticket.jpg',"wb") do |f|
       f.write(Base64.decode64(photo.split('data:image/png;base64,').last))
     end
@@ -80,7 +70,7 @@ class TicketsController < ApplicationController
     # file_name ='https://media-cdn.tripadvisor.com/media/photo-s/14/60/a2/79/ticket-de-caisse.jpg'
     # res = Cloudinary::Uploader.upload(file_name)
     # uploaded_url = res["url"]
-    image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: (api_key))
+    image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: Rails.application.credentials.google_vision_apikey)
     response = image_annotator.document_text_detection image: Rails.root.join('new_ticket.jpg').to_path
     text = ""
     response.responses.each do |res|
@@ -88,7 +78,7 @@ class TicketsController < ApplicationController
         text << annotation.description
       end
     end
-    puts text
+    File.delete(Rails.root.join('new_ticket.jpg').to_path)
     return text
   end
 

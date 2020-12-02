@@ -27,6 +27,7 @@ const initScanner = () => {
         document.getElementById("scanned_bar_code").value = scanResult.barcodes[0].data;
         document.getElementById("scan_form").submit()
       });
+
     });
   }
 };

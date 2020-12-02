@@ -21,7 +21,11 @@ class PagesController < ApplicationController
     @global_tickets = @tickets.map do |ticket|
       calculate_ticket_score(ticket)
     end
-    @global_tickets_score = @global_tickets.reduce(0, :+) / @tickets.size
+    if @tickets.size == 0
+      @global_tickets_score = 0
+    else
+      @global_tickets_score = @global_tickets.reduce(0, :+) / @tickets.size
+    end
   end
 
   def calculate_ticket_score(ticket)
