@@ -5,17 +5,18 @@
 <% if current_user %>
   <div class="figures-grid">
 
-    <div class="figures-card">
-      <%= link_to tickets_path do  %>
-      <div>
-        <h4>Tickets</h4>
-        <h3><%= @tickets.count %></h3>
+    <%= link_to tickets_path do  %>
+      <div class="figures-card">
+        <div>
+          <h4>Tickets</h4>
+          <h3><%= @tickets.count %></h3>
+        </div>
       </div>
-      <% end %>
-    </div>
+    <% end %>
 
-    <div class="figures-card">
-      <%= link_to favorites_path do %>
+
+    <%= link_to favorites_path do %>
+      <div class="figures-card">
         <div>
         <h4>Favoris</h4>
         <% if @favorites.count.nil? %>
@@ -24,8 +25,8 @@
           <h3><%= @favorites.count %></h3>
         <% end %>
       </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="global-score">
