@@ -1,7 +1,7 @@
 <div class="container" style="padding-bottom: 0">
 
   <% if current_user %>
-    <h1 id="title"> Bonjour <%= current_user.first_name.capitalize %>,</h1>
+    <h1 id="title"> Bonjour <%= current_user.first_name.capitalize %></h1>
 
 
     <div class="figures-grid">
@@ -39,6 +39,7 @@
             </div>
           </div>
         </div>
+        <p class="info-dashboard">Ce score est calculé en fonction de vos <br> tickets de caisse scannés</p>
       </div>
     <% end %>
   <% end %>
