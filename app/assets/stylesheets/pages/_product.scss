@@ -1,8 +1,9 @@
 .photo-container{
-height: 200px;
+ height: 200px;
  display: flex;
  justify-content: center;
  align-items: center;
+ margin-bottom: 6px;
 }
 
 .product-img {
@@ -89,6 +90,7 @@ height: 200px;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0 0 0;
+
   .product-description {
     h2 {
       font-size: 1.2rem;

@@ -17,25 +17,25 @@
         <div class="product-score-detail">
             <p class="label">Emballage</p>
             <% if  @product.ecoscore_grade == "a" %>
-              <span class="badge badge-pill m-0" id="badge-green" >Bon</span>
+              <span class="badge badge-pill m-0" id="badge-green" >bon</span>
             <% elsif @product.ecoscore_grade == "b" %>
-              <span class="badge badge-pill m-0" id="badge-orange" >Moyen</span>
+              <span class="badge badge-pill m-0" id="badge-orange" >moyen</span>
               <% elsif @product.ecoscore_grade == nil %>
-              <span class="badge badge-pill m-0" id="badge-neutral" >NA</span>
+              <span class="badge badge-pill m-0" id="badge-neutral" >indisp.</span>
               <% else %>
-              <span class="badge badge-pill m-0" id="badge-red" >Mauvais</span>
+              <span class="badge badge-pill m-0" id="badge-red" >mauvais</span>
             <% end %>
         </div>
         <div class="product-score-detail">
             <p class="label">Production</p>
             <% if  @product.nutriscore_grade == "a" %>
-              <span class="badge badge-pill m-0"id="badge-green" >Bon</span>
+              <span class="badge badge-pill m-0"id="badge-green" >bon</span>
             <% elsif @product.nutriscore_grade == "b" %>
-              <span class="badge badge-pill m-0" id="badge-orange" >Moyen</span>
+              <span class="badge badge-pill m-0" id="badge-orange" >moyen</span>
             <% elsif @product.nutriscore_grade.nil? %>
-              <span class="badge badge-pill m-0" id="badge-neutral" >NA</span>
+              <span class="badge badge-pill m-0" id="badge-neutral" >indisp.</span>
             <% else %>
-              <span class="badge badge-pill m-0"id="badge-red" >Mauvais</span>
+              <span class="badge badge-pill m-0"id="badge-red" >mauvais</span>
             <% end %>
         </div>
       </div>
