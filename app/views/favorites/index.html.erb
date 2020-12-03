@@ -4,7 +4,20 @@
   <% if @favorites.count.zero? %>
     <p><small>Ajoutez des produits à vos favoris</small></p>
   <% else %>
-    <p><small>Vous avez <%= pluralize(@favorites.count,'produit', plural: 'produits') %> dans vos favoris</small></p>
+    <p style="margin-bottom: 0"><small>Vous avez <%= pluralize(@favorites.count,'produit', plural: 'produits') %> dans vos favoris</small></p>
+    <ul class="filtre-favorite">
+      <li class="filtre-btn active"><p>Tous</p></li>
+      <li class="filtre-btn"><p>Viandes et poissons</p></li>
+      <li class="filtre-btn"><p>Fruits et légumes</p></li>
+      <li class="filtre-btn"><p>Snacks</p></li>
+      <li class="filtre-btn"><p>Boissons</p></li>
+      <li class="filtre-btn"><p>Produits laitiers</p></li>
+      <li class="filtre-btn"><p>Pains et patisseries</p></li>
+      <li class="filtre-btn"><p>Surgelés</p></li>
+      <li class="filtre-btn"><p>Desserts</p></li>
+      <li class="filtre-btn"><p>Produits non alimentaires</p></li>
+      <li class="filtre-btn"><p>Produits d'origine végétale</p></li>
+    </ul>
   <% end %>
 
   <div class="gallery-container">
