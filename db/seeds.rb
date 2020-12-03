@@ -78,6 +78,51 @@ bar_codes.each do |bar_code|
     end
 end
 
+
+  url = "https://world.openfoodfacts.org/api/v0/product/3564709163871.json"
+  product_serialized = open(url).read
+  product = JSON.parse(product_serialized)
+
+madeleine_bretonne = Product.create(
+        score: 80,
+        bar_code: 3564709163871,
+        category: "Autres",
+        name: "Madeleines coquilles de Bretagne",
+        photo: product["product"]["selected_images"]["front"]["small"].first[1],
+        generic_name: product["product"]["generic_name"],
+        brand: product["product"]["brands"],
+        category_agribalyse: 24630,
+        ecoscore_grade: "a",
+        nutriscore_grade: "b"
+        )
+        if madeleine_bretonne.score.nil?
+          madeleine_bretonne.destroy
+        else
+          Item.create(description: madeleine_bretonne[:name], product_id: madeleine_bretonne.id)
+        end
+
+  url = "https://world.openfoodfacts.org/api/v0/product/3564709163871.json"
+  product_serialized = open(url).read
+  product = JSON.parse(product_serialized)
+
+best_madeleine = Product.create(
+        score: 80,
+        bar_code: 3175681054158,
+        category: "Autres",
+        name: "Madeleines aux oeufs",
+        photo: product["product"]["selected_images"]["front"]["small"].first[1],
+        generic_name: product["product"]["generic_name"],
+        brand: product["product"]["brands"],
+        category_agribalyse: 24630,
+        ecoscore_grade: "a",
+        nutriscore_grade: "b"
+        )
+        if best_madeleine.score.nil?
+          best_madeleine.destroy
+        else
+          Item.create(description: best_madeleine[:name], product_id: best_madeleine.id)
+        end
+
 puts "Done !! "
 
 
