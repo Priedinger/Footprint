@@ -86,6 +86,11 @@ puts "Creating 1 tickets for Elsa / U Express with a bad score"
 items_uexpress = []
 bar_codes = [4006040021520, 3222476448149, 3265470035861, 3560070262595, 80052043]
 
+bar_codes.each do |bar_code|
+  url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
+  product_serialized = open(url).read
+  product = JSON.parse(product_serialized)
+
 puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
   new_product = Product.create(
     score: product["product"]["ecoscore_data"]["score"],
@@ -104,7 +109,7 @@ puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
     else
       items_uexpress << Item.create(description: new_product[:name], product_id: new_product.id)
     end
-end
+  end
 
 items_uexpress_description = []
 
