@@ -66,7 +66,7 @@ bar_codes.each do |bar_code|
         photo: product["product"]["selected_images"]["front"]["small"].first[1],
         generic_name: product["product"]["generic_name"],
         brand: product["product"]["brands"],
-        category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"],
+        category_agribalyse: 24630,
         ecoscore_grade: product["product"]["ecoscore_grade"],
         nutriscore_grade: product["product"]["nutriscore_grade"]
         )
