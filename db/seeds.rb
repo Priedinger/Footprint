@@ -281,3 +281,28 @@ items_default.each do |item|
       item_id: item.id,
       quantity: 1)
 end
+
+puts "creating Favorites for Elsa"
+
+bar_codes_fav = [3245390089854, 3033710074525, 3184030001194, 3250547014115, 8712566109067, 3254691586054, 3155250358788, 3560070910366, 3760121210227, 3421557108037, 3760122961708, 3661344155121, 3033710065967, 8711200448883 ]
+
+bar_codes_fav.each do |bar_code|
+  url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
+  product_serialized = open(url).read
+  product= JSON.parse(product_serialized)
+
+  new_product_fav = Product.create(
+        score: 80,
+        bar_code: bar_code,
+        category: clean_category(product["product"]["categories_tags"]),
+        name: product["product"]["product_name_fr"],
+        photo: product["product"]["selected_images"]["front"]["small"].first[1],
+        generic_name: product["product"]["generic_name"],
+        brand: product["product"]["brands"],
+        category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"],
+        ecoscore_grade: "a",
+        nutriscore_grade: "a"
+        )
+  Item.create(description: new_product_fav[:name], product_id: new_product_fav.id)
+  Favorite.create(user_id: elsa.id, product_id: new_product_fav.id)
+end
