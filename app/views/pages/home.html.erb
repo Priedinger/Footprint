@@ -3,7 +3,6 @@
   <% if current_user %>
     <h1 id="title"> Bonjour <%= current_user.first_name.capitalize %></h1>
 
-
     <div class="figures-grid">
 
       <%= link_to tickets_path do  %>
@@ -39,7 +38,7 @@
             </div>
           </div>
         </div>
-        <p class="info-dashboard">Ce score est calculé en fonction de vos <br> tickets de caisse scannés</p>
+        <p class="info-dashboard">Rapprochez vous d'un score de 100 en scannant <br> vos tickets de caisse ! </p>
       </div>
     <% end %>
   <% end %>

@@ -13,3 +13,16 @@
   background-color: $light-green;
   color: $green;
  }
+
+  #badge-neutral{
+  background-color: $light-gray;
+  color: $gray;
+  font-weight: 400;
+ }
+
+ #badge-category{
+  background-color: $white;
+  color: $green;
+  border: 1px solid;
+  border-radius: 5px;
+ }

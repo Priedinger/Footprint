@@ -1,36 +1,43 @@
 <div class="container" style="padding-bottom: 0">
-  <div class="product-img">
-    <%= image_tag @product.photo, :class => "rounded" %>
+  <div class="photo-container">
+    <div class="product-img">
+      <%= image_tag @product.photo, :class => "rounded" %>
+    </div>
   </div>
+
   <div class="product-infos">
     <div class="product-description">
-      <span class="badge badge-success mb-3"><%= @product.category%></span>
+      <span class="badge mb-3" id="badge-category"><%= @product.category%></span>
 
       <!-- A CHANGER PETIT POIS -->
 
       <h2 id="title" style="margin-bottom: 0px"><%= @title%></h2>
-      <p style="margin-bottom: 8px"><em><%= @product.brand%></em></p>
-      <div>
-        <% unless @product.ecoscore_grade.nil? %>
-         <i class="fas fa-shopping-bag"></i>
-          <% if  @product.ecoscore_grade == "a" %>
-            <span class="badge badge-pill badge-success m-0" >A</span>
-          <% elsif @product.ecoscore_grade == "b" %>
-            <span class="badge badge-pill badge-warning m-0" >B</span>
-          <% else %>
-            <span class="badge badge-pill badge-danger m-0" >C</span>
-          <% end %>
-        <% end %>
-        <% unless @product.nutriscore_grade.nil? %>
-          <i class="fas fa-carrot"></i>
-          <% if  @product.nutriscore_grade == "a" %>
-            <span class="badge badge-pill badge-success m-0" >A</span>
-          <% elsif @product.nutriscore_grade == "b" %>
-            <span class="badge badge-pill badge-warning m-0" >B</span>
-          <% else %>
-            <span class="badge badge-pill badge-danger m-0" >C</span>
-          <% end %>
-        <% end %>
+      <p style="margin-bottom: 4px"><em><%= @product.brand%></em></p>
+      <div class="product-score-details">
+        <div class="product-score-detail">
+            <p class="label">Emballage</p>
+            <% if  @product.ecoscore_grade == "a" %>
+              <span class="badge badge-pill m-0" id="badge-green" >bon</span>
+            <% elsif @product.ecoscore_grade == "b" %>
+              <span class="badge badge-pill m-0" id="badge-orange" >moyen</span>
+              <% elsif @product.ecoscore_grade == nil %>
+              <span class="badge badge-pill m-0" id="badge-neutral" >indisp.</span>
+              <% else %>
+              <span class="badge badge-pill m-0" id="badge-red" >mauvais</span>
+            <% end %>
+        </div>
+        <div class="product-score-detail">
+            <p class="label">Production</p>
+            <% if  @product.nutriscore_grade == "a" %>
+              <span class="badge badge-pill m-0"id="badge-green" >bon</span>
+            <% elsif @product.nutriscore_grade == "b" %>
+              <span class="badge badge-pill m-0" id="badge-orange" >moyen</span>
+            <% elsif @product.nutriscore_grade.nil? %>
+              <span class="badge badge-pill m-0" id="badge-neutral" >indisp.</span>
+            <% else %>
+              <span class="badge badge-pill m-0"id="badge-red" >mauvais</span>
+            <% end %>
+        </div>
       </div>
     </div>
     <div class="product-score">
