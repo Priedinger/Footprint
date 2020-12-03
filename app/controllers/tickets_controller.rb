@@ -27,6 +27,10 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(tickets_params)
     @ticket.user = current_user
     text = read_ticket(tickets_params[:photo])
+    if text == "no text in the photo"
+      render :new
+      return
+    end
     text = text.select {|item| item.length > 25}
     @ticket.photo = text.join(",FOOTPRINT,")
     if @ticket.save
@@ -70,6 +74,9 @@ class TicketsController < ApplicationController
     end
     image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: Rails.application.credentials.google_vision_apikey)
     response = image_annotator.document_text_detection image: Rails.root.join('new_ticket.jpg').to_path
+    if response.responses.first.text_annotations.first.nil?
+      return "no text in the photo"
+    end
     text = response.responses.first.text_annotations.first.description.split("\n")
     # response.responses.each do |res|
     #   text = res.text_annotations.first.description.split("\n")
@@ -78,6 +85,7 @@ class TicketsController < ApplicationController
       # end
     # end
     File.delete(Rails.root.join('new_ticket.jpg').to_path)
+    # redirect_to new_ticket_path
     return text
   end
 
