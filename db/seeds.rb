@@ -45,10 +45,11 @@ def clean_category(off_category)
   end
 end
 
-
 puts "Creating Products ALTERNATIVES FOR MADELEINES"
 
-bar_codes = [ 3560071232726, 3701005300405, 3178530414943, 3564700046821]
+bar_codes = [ 3560071232726, 3701005300405, 3178530414943, 3564700046821, 3423720012295, 3250392401405 ]
+
+
 
 bar_codes.each do |bar_code|
   url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
@@ -138,7 +139,7 @@ puts "Creating 1 tickets for Elsa / CARREFOUR with a bad score"
 
 items_carrefour = []
 
-bar_codes = [20460204, 3270190021001, 20143077, 3660140917759, 3250392046255]
+bar_codes = [20143077, 3660140917759, 3250392046255]
 bar_codes.each do |bar_code|
   url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
   product_serialized = open(url).read
@@ -186,12 +187,11 @@ items_carrefour.each do |item|
   end
 
 
-
 puts "Creating 1 tickets for Elsa / DEFAULT with a bad score"
 
 items_default = []
 
-bar_codes = [3263858780211, 2019000051972, 3045320001693, 3307902060086]
+bar_codes = [3263858780211, 2019000051972, 3045320001693]
 bar_codes.each do |bar_code|
   url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
   product_serialized = open(url).read
