@@ -46,17 +46,47 @@ def clean_category(off_category)
 end
 
 
+puts "Creating Products ALTERNATIVES FOR MADELEINES"
+
+bar_codes = [ 3560071232726, 3701005300405, 3178530414943, 3564700046821]
+
+bar_codes.each do |bar_code|
+  url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
+  product_serialized = open(url).read
+  product = JSON.parse(product_serialized)
+
+    if product["product"]["ecoscore_data"]
+      puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
+      new_product = Product.create(
+        score: product["product"]["ecoscore_data"]["score"],
+        bar_code: bar_code,
+        category: clean_category(product["product"]["categories_tags"]),
+        name: product["product"]["product_name_fr"],
+        photo: product["product"]["selected_images"]["front"]["small"].first[1],
+        generic_name: product["product"]["generic_name"],
+        brand: product["product"]["brands"],
+        category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"],
+        ecoscore_grade: product["product"]["ecoscore_grade"],
+        nutriscore_grade: product["product"]["nutriscore_grade"]
+        )
+        if new_product.score.nil?
+          new_product.destroy
+        else
+          Item.create(description: new_product[:name], product_id: new_product.id)
+        end
+    end
+end
+
+puts "Done !! "
+
+
 # CREATING 3 TICKETS WITH BAD SCORE
 puts "Creating 1 tickets for Elsa / U Express with a bad score"
 
 items_uexpress = []
 bar_codes = [4006040021520, 3222476448149, 3265470035861, 3560070262595, 80052043]
 
-bar_codes.each do |bar_code|
-  url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
-  product_serialized = open(url).read
-  product = JSON.parse(product_serialized)
-  puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
+puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
   new_product = Product.create(
     score: product["product"]["ecoscore_data"]["score"],
     bar_code: bar_code,
