@@ -72,7 +72,7 @@
 
 
 
-  <% if @product.category_agribalyse.nil? %>
+  <% if @product.category_agribalyse.nil? || @alternatives.count == 0 %>
     <div class="container">
       <p>Désolé, nous ne pouvons pas proposer d'alternatives pour ce produit.</p>
     </div>
