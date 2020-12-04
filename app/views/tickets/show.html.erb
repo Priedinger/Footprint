@@ -39,7 +39,7 @@
     <p class="ticket-show-title"><strong> <%= @identified_items.count %> produits identifiés </strong></p>
   <% end %>
 <% end %>
-  <% @ticket.items.each do |item| %>
+  <% @identified_items.each do |item| %>
     <% if item.product_id?%>
       <%= link_to product_path(item.product_id) do %>
         <div class="ticket-card">
