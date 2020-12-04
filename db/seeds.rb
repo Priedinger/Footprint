@@ -90,7 +90,7 @@ madeleine_bretonne = Product.create(
         name: "Madeleines coquilles de Bretagne",
         photo: product["product"]["selected_images"]["front"]["small"].first[1],
         generic_name: product["product"]["generic_name"],
-        brand: product["product"]["brands"],
+        brand: "Nos régions ont du talent",
         category_agribalyse: 24630,
         ecoscore_grade: "a",
         nutriscore_grade: "b"
