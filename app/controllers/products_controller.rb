@@ -10,8 +10,5 @@ class ProductsController < ApplicationController
     # création array alternatives : les produits ayant la même category agribalyse en excluant le produit de la show actuelle
     @alternatives = Product.where(category_agribalyse: @product.category_agribalyse).reject{|product| product.id == @product.id}
     @alternatives = @alternatives.select{|alternative| alternative.score > @product.score}
-    unless @alternatives.count == 0
-      @alternatives = @alternatives.order(score: :desc)
-    end
   end
 end
