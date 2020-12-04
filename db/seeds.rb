@@ -86,7 +86,7 @@ end
 madeleine_bretonne = Product.create(
         score: 80,
         bar_code: 3564709163871,
-        category: "Autres",
+        category: "Snacks",
         name: "Madeleines coquilles de Bretagne",
         photo: product["product"]["selected_images"]["front"]["small"].first[1],
         generic_name: product["product"]["generic_name"],
@@ -108,7 +108,7 @@ madeleine_bretonne = Product.create(
 best_madeleine = Product.create(
         score: 80,
         bar_code: 3175681054158,
-        category: "Autres",
+        category: "Snacks",
         name: "Madeleines aux oeufs",
         photo: product["product"]["selected_images"]["front"]["small"].first[1],
         generic_name: product["product"]["generic_name"],
