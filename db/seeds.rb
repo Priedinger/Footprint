@@ -101,7 +101,7 @@ madeleine_bretonne = Product.create(
           Item.create(description: madeleine_bretonne[:name], product_id: madeleine_bretonne.id)
         end
 
-  url = "https://world.openfoodfacts.org/api/v0/product/3564709163871.json"
+  url = "https://world.openfoodfacts.org/api/v0/product/3175681054158.json"
   product_serialized = open(url).read
   product = JSON.parse(product_serialized)
 
@@ -168,7 +168,8 @@ items_uexpress_description.join(",")
 new_ticket = Ticket.create(
     store: "U Express",
     user_id: elsa.id,
-    photo: items_uexpress_description
+    photo: items_uexpress_description,
+    created_at: Date.today - 25
     )
 
 items_uexpress.each do |item|
@@ -180,7 +181,7 @@ end
 
 
 
-puts "Creating 1 tickets for Elsa / CARREFOUR with a bad score"
+puts "Creating 1 ticket for Elsa / CARREFOUR with a bad score"
 
 items_carrefour = []
 
@@ -221,7 +222,8 @@ items_carrefour_description.join(",")
 new_ticket = Ticket.create(
     store: "Carrefour",
     user_id: elsa.id,
-    photo: items_carrefour_description
+    photo: items_carrefour_description,
+    created_at: Date.today - 10
     )
 
 items_carrefour.each do |item|
@@ -230,6 +232,60 @@ items_carrefour.each do |item|
       item_id: item.id,
       quantity: 1)
   end
+
+
+puts "Creating another ticket for Elsa / CARREFOUR with a bad score"
+
+items_carrefour = []
+
+bar_codes = [20143077, 3660140917759, 3250392046255]
+bar_codes.each do |bar_code|
+  url = "https://world.openfoodfacts.org/api/v0/product/#{bar_code}.json"
+  product_serialized = open(url).read
+  product = JSON.parse(product_serialized)
+  puts "#{product["product"]["product_name_fr"]} // #{bar_code} "
+  new_product = Product.create(
+    score: product["product"]["ecoscore_data"]["score"],
+    bar_code: bar_code,
+    category: clean_category(product["product"]["categories_tags"]),
+    name: product["product"]["product_name_fr"],
+    photo: product["product"]["selected_images"]["front"]["small"].first[1],
+    generic_name: product["product"]["generic_name"],
+    brand: product["product"]["brands"],
+    category_agribalyse: product["product"]["categories_properties"]["agribalyse_food_code:en"],
+    ecoscore_grade: product["product"]["ecoscore_grade"],
+    nutriscore_grade: product["product"]["nutriscore_grade"]
+    )
+    if new_product.score.nil?
+      new_product.destroy
+    else
+      items_carrefour << Item.create(description: new_product[:name], product_id: new_product.id)
+    end
+end
+
+
+items_carrefour_description = []
+
+items_carrefour.each do |item|
+  items_carrefour_description << item.description
+end
+
+items_carrefour_description.join(",")
+
+new_ticket = Ticket.create(
+    store: "Carrefour",
+    user_id: elsa.id,
+    photo: items_carrefour_description,
+    created_at: Date.today - 52
+    )
+
+items_carrefour.each do |item|
+    TicketLine.create(
+      ticket_id: new_ticket.id,
+      item_id: item.id,
+      quantity: 1)
+  end
+
 
 
 puts "Creating 1 tickets for Elsa / DEFAULT with a bad score"
@@ -272,7 +328,8 @@ items_default_description.join(",")
 
 new_ticket = Ticket.create(
     user_id: elsa.id,
-    photo: items_default_description
+    photo: items_default_description,
+    created_at: Date.today - 34
     )
 
 items_default.each do |item|
