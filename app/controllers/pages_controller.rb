@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def settings
-    @title = "Settings"
+    @title = "Paramètres"
   end
 
   private

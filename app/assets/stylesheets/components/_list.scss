@@ -1,0 +1,38 @@
+.list {
+  background-color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0.5rem 0 1rem 0;
+  .list--line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $body-bg;
+  }
+  .list--btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $body-bg;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray;
+    }
+  }
+
+}
+
+.list--title {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  padding-left: 15px;
+}
