@@ -1,7 +1,17 @@
 class FavoritesController < ApplicationController
 
   def index
-    @favorites = current_user.favorites.order(created_at: :desc)
+    if params[:query].present?
+      sql_query = " \
+      products.name ILIKE :query \
+      OR products.generic_name ILIKE :query \
+      OR products.brand ILIKE :query \
+      "
+      @favorites = current_user.favorites.joins(:product).where(sql_query, query: "%#{params[:query]}%")
+      
+    else
+      @favorites = current_user.favorites.order(created_at: :desc)
+    end
     @title = 'Favoris'
   end
 
