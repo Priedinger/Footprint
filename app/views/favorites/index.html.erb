@@ -4,6 +4,14 @@
   <% if @favorites.count.zero? %>
     <p><small>Ajoutez des produits à vos favoris</small></p>
   <% else %>
+    <%= form_tag favorites_path, class: "search-flex mb-2", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Trouver un produit"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
     <p style="margin-bottom: 0"><small>Vous avez <%= pluralize(@favorites.count,'produit', plural: 'produits') %> dans vos favoris</small></p>
     <ul class="filtre-favorite">
       <li class="filtre-btn active"><p>Tous</p></li>
