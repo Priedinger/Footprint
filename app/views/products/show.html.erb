@@ -1,4 +1,10 @@
 <div class="container" style="padding-bottom: 0">
+
+  <!-- Lien retour à la page historique des tickets -->
+  <%= link_to :back do %>
+    <p><%= "Retour" %></p>
+  <% end %>
+
   <div class="photo-container">
     <div class="product-img">
       <%= image_tag @product.photo, :class => "rounded" %>
