@@ -1,13 +1,43 @@
-<h1 id="title"><%= @title %></h1>
-<p>Profil utilisateur</p>
+<div class="container">
+  <h1 id="title"><%= @title %></h1>
+</div>
 <%= @current_user %>
 
 <% if current_user %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+
+<h6 class="list--title">ACCOUNT</h6>
+<div class="list">
+  <div class="list--line">
+    <p>Email</p>
+    <p class="text-light-gray"><%= current_user.email %></p>
+  </div>
+  <%= link_to edit_user_registration_path do  %>
+  <div class="list--line">
+    <p>Changer votre mot de passe</p>
+    <p class="text-light-gray"><i class="fas fa-chevron-right" ></i></p>
+  </div>
+  <% end %>
+</div>
+<h6 class="list--title">FOOTPRINT</h6>
+<div class="list">
+  <div class="list--line">
+    <p>Partager</p>
+    <p class="text-light-gray"><i class="fas fa-chevron-right" style="color: $light-gray"></i></p>
+  </div>
+  <div class="list--line">
+    <p>Nous contacter</p>
+    <p class="text-light-gray"><i class="fas fa-chevron-right" style="color: $light-gray"></i></p>
+  </div>
+  <div class="list--line">
+    <p>Foire aux questions (FAQ)</p>
+    <p class="text-light-gray"><i class="fas fa-chevron-right" style="color: $light-gray"></i></p>
+  </div>
+</div>
+<div class="list">
+  <div class="list--btn">
+    <%= link_to "Se déconnecter", destroy_user_session_path, class: "text-info", method: :delete %>
+  </div>
 <% else %>
   <%= link_to "Login", new_user_session_path, class: "nav-link" %>
 <% end %>
-
-<%= link_to 'Mes Favoris', favorites_path %>
-<%= link_to 'Home', root_path %>
-
+</div>
