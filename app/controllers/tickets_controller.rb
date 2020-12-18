@@ -31,7 +31,17 @@ class TicketsController < ApplicationController
       render :new
       return
     end
-    text = text.select {|item| item.length > 25}
+
+    # ticket "franprix v1"
+    if text.include? 'franprix'
+      p "**********************TICKET FRANPRIX *************************"
+      p text = testfranprix(text)
+    # ticket "u express v1"
+    else
+      p "************************ticket u express*************************"
+      text = text.select {|item| item.length > 25}
+    end
+
     @ticket.photo = text.join(",FOOTPRINT,")
     if @ticket.save
       items = @ticket.photo
@@ -78,11 +88,12 @@ class TicketsController < ApplicationController
       return "no text in the photo"
     end
     text = response.responses.first.text_annotations.first.description.split("\n")
+    p text
     # response.responses.each do |res|
-    #   text = res.text_annotations.first.description.split("\n")
-      # res.text_annotations.each do |annotation|
-      #   text << "#{annotation.description},"
-      # end
+      # text = res.text_annotations.first.description.split("\n")
+        # res.text_annotations.each do |annotation|
+        #   text << "#{annotation.description},"
+        # end
     # end
     File.delete(Rails.root.join('new_ticket.jpg').to_path)
     # redirect_to new_ticket_path
@@ -96,4 +107,20 @@ class TicketsController < ApplicationController
     end
     ticket_score = total_score / ticket.items.where.not(product_id: nil).count
   end
+
+  def testfranprix(text)
+    last_product_index = (text.index { |x| x.include?("€")} - 1)
+    text = text[0..last_product_index]
+    p text
+    result= []
+    text.reverse.each do |product|
+      if !(product =~ /[a-z]/)
+        result << product
+      else
+        break
+      end
+    end
+    result
+  end
+
 end
