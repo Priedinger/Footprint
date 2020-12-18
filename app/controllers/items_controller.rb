@@ -64,6 +64,13 @@ class ItemsController < ApplicationController
     # @item.update(item_params)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @ticket = Ticket.find(params[:ticket_id])
+    @item.destroy
+    redirect_to ticket_path(@ticket.id)
+  end
+
 private
 
   def items_params

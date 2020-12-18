@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :tickets, only: [:new, :create, :show, :index, :destroy] do
     resources :items, only: [:index]
   end
-  resources :items, only: [:show, :edit, :update]
+  resources :items, only: [:show, :edit, :update, :destroy]
   resources :products, only: [:show, :update]
   resources :favorites, only: [:index, :create, :destroy]
   get 'settings', to: 'pages#settings'
